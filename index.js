@@ -1,23 +1,6 @@
 const puppeteer = require("puppeteer");
-const xlsx = require("xlsx");
-require('dotenv').config(); // Load environment variables from .env file
-
-// Function to extract data from a table, including nested tables
-const extractTableData = (table) => {
-  const rows = Array.from(table.querySelectorAll("tr"));
-  return rows.map((row) => {
-    const columns = Array.from(row.querySelectorAll("td, th"));
-    return columns.map((column) => {
-      // Check for nested tables within a cell
-      const nestedTable = column.querySelector("table");
-      if (nestedTable) {
-        // If there's a nested table, recursively extract its data
-        return extractTableData(nestedTable);
-      }
-      return column.innerText.trim();
-    });
-  });
-};
+const fs = require("fs");
+require('dotenv').config();
 
 (async () => {
   const usr = process.env.usr;
@@ -43,27 +26,54 @@ const extractTableData = (table) => {
   try {
     await page.waitForSelector("table", { timeout: 5000 });
   } catch (err) {
-    console.error("Error: No tables found on the page.");
+    console.error("Error: No tables found on the page.", err);
     await browser.close();
     return;
   }
 
-  const tables = await page.$$eval("table", (tables) => {
-    return tables.map((table) => extractTableData(table));
+  // Define the function to extract data from a table within the browser context
+  const extractTableData = () => {
+    const extractData = (table) => {
+      const rows = Array.from(table.querySelectorAll("tr"));
+      return rows.map((row) => {
+        const columns = Array.from(row.querySelectorAll("td, th"));
+        return columns.map((column) => {
+          // Check for nested tables within a cell
+          const nestedTable = column.querySelector("table");
+          if (nestedTable) {
+            // If there's a nested table, recursively extract its data
+            return extractData(nestedTable);
+          }
+          return column.innerText.trim();
+        });
+      });
+    };
+
+    const tables = Array.from(document.querySelectorAll("table"));
+    return tables.map((table) => extractData(table));
+  };
+
+  const tables = await page.evaluate(extractTableData);
+
+  // Format to JSON
+  const formattedData = tables.map((tableData, index) => {
+    return {
+      tableName: `Table${index + 1}`,
+      data: tableData.map((row) => {
+        return row.reduce((acc, curr, i) => {
+          acc[`Column${i + 1}`] = curr;
+          return acc;
+        }, {});
+      }),
+    };
   });
 
-  const workbook = xlsx.utils.book_new();
+  const jsonFilePath = "./scraped_tables.json";
 
-  tables.forEach((tableData, index) => {
-    const worksheet = xlsx.utils.json_to_sheet(tableData.flat(1));
-    xlsx.utils.book_append_sheet(workbook, worksheet, `Table${index + 1}`);
-  });
+  // Save the formatted data to a JSON file
+  fs.writeFileSync(jsonFilePath, JSON.stringify(formattedData, null, 2));
 
-  const filePath = "./scraped_tables.xlsx";
-
-  xlsx.writeFile(workbook, filePath);
-
-  console.log(`Data has been saved to ${filePath}`);
+  console.log(`Data has been saved to ${jsonFilePath}`);
 
   await browser.close();
 })();
