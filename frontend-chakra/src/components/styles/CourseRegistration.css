@@ -1,0 +1,61 @@
+/* CourseRegistration.css */
+
+/* Card Styles */
+.course-card {
+    border: 1px solid #e2e8f0; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+    background-color: #fff; /* White background for cards */
+  }
+  
+  .course-card:hover {
+    transform: translateY(-4px); /* Lift effect on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+  }
+  
+  /* Accordion Header Styles */
+  .accordion-header {
+    background-color: #edf2f7; /* Light gray background for accordion header */
+    border-bottom: 1px solid #e2e8f0; /* Border below the header */
+    padding: 0.5rem 1rem; /* Padding for better spacing */
+  }
+  
+  .accordion-header:hover {
+    background-color: #e2e8f0; /* Slightly darker background on hover */
+  }
+  
+  /* Accordion Panel Styles */
+  .accordion-panel {
+    background-color: #f7fafc; /* Slightly darker background for panel */
+  }
+  
+  /* Badge Styles */
+  .accordion-badge {
+    margin-left: 0.5rem; /* Spacing between text and badge */
+  }
+  
+  /* Button Styles */
+  .register-button {
+    margin-top: 1rem; /* Margin above the button */
+    font-weight: bold; /* Bold font for button text */
+    background-color: #3182ce; /* Blue background */
+    color: white; /* White text color */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+  }
+  
+  .register-button:hover {
+    background-color: #2b6cb0; /* Darker blue on hover */
+  }
+  
+  /* Text Colors */
+  .text-in-progress {
+    color: #d69e2e; /* Custom color for "In Progress" text */
+    font-weight: bold; /* Make it bold */
+  }
+  
+  .text-cleared {
+    color: #48bb78; /* Custom color for cleared text */
+    font-weight: bold; /* Make it bold */
+  }
+  
