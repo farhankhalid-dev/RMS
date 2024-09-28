@@ -72,7 +72,7 @@ require('dotenv').config();
           } else if (parts.length === 3) {
             day = parts[0];
             startTime = parts[1];
-            room = parts[2];
+            endTime = parts[2];
           }
 
           return {
@@ -117,9 +117,56 @@ require('dotenv').config();
 
   const formattedData = await page.evaluate(extractTableData);
 
-  // Save the data
+  const groupedCourses = formattedData.reduce((acc, course) => {
+    if (!acc[course.courseCode]) {
+      acc[course.courseCode] = [];
+    }
+    acc[course.courseCode].push(course);
+    return acc;
+  }, {});
+
+  // Transform grouped courses into CourseGroup objects
+  const courseGroups = Object.entries(groupedCourses).map(([courseCode, courses]) => {
+    const mainCourse = courses[0];
+    const slots = courses.map(course => ({
+      timings: course.timings,
+      facultyName: course.facultyName,
+      status: course.status
+    }));
+
+    let status = mainCourse.status; // Keep status separate
+    if (status === 'unknown' && mainCourse.facultyName === 'In Progress') {
+        status = 'In Progress';
+    } else if (status === 'unknown' && mainCourse.facultyName === 'Pre Requisite not cleared') {
+        status = 'Pre Requisites not cleared';
+    }
+
+    let preRequisites;
+    if (!mainCourse.preRequisite || mainCourse.preRequisite === '-') {
+        preRequisites = ['None'];
+    } else {
+        preRequisites = mainCourse.preRequisite.split('\n').map(prereq => {
+            return `${prereq}`;
+        });
+    }
+
+    // Set Grade to N/A if it is "To be taken"
+    const grade = mainCourse.grade === "To be taken" ? "N/A" : mainCourse.grade;
+
+    return {
+        Name: mainCourse.courseName,
+        CourseCode: courseCode,
+        Status: status,
+        Semester: mainCourse.semester,
+        PreRequisites: preRequisites,
+        Credits: mainCourse.credits,
+        SLOTS: slots,
+        Grade: grade
+    };
+  });
+
   const jsonFilePath = './courses.json';
-  fs.writeFileSync(jsonFilePath, JSON.stringify(formattedData, null, 2));
+  fs.writeFileSync(jsonFilePath, JSON.stringify(courseGroups, null, 2));
   console.log(`Data has been saved to ${jsonFilePath}`);
 
   await browser.close();

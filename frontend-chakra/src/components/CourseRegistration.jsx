@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Box,
   SimpleGrid,
@@ -14,18 +14,19 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
+
 import "./styles/CourseRegistration.css";
 
-// Assign unique IDs to course cards programmatically
-const generateUniqueId = (course, index) => `${course.courseCode}-${index}`;
-
-const CourseCard = React.memo(({ course, isSelected, onSelect }) => {
+// CourseCard Component
+const CourseCard = ({ course, slot, isSelected, onSelect }) => {
   const handleClick = () => {
-    onSelect(course);
+    onSelect(course, slot);
   };
 
   const displayFacultyName =
-    course.facultyName === "FACULTY MEMBER" ? "N/A" : course.facultyName;
+    slot.facultyName === "FACULTY MEMBER" ? "N/A" : slot.facultyName;
+
+  const status = course.Status || slot.status || "Unknown";
 
   return (
     <Card
@@ -36,25 +37,31 @@ const CourseCard = React.memo(({ course, isSelected, onSelect }) => {
       width="80%"
       className="course-card"
     >
-      {course.status === "available" && (
+      {status === "available" && (
         <Checkbox
           position="absolute"
           top={2}
           right={2}
           isChecked={isSelected}
-          onChange={() => onSelect(course)}
-          isDisabled={course.grade === "cleared"}
+          onChange={handleClick}
+          isDisabled={status.includes("cleared")}
         />
       )}
       <Text
+        className="slot-instructor"
         color={displayFacultyName === "In Progress" ? "yellow.500" : "inherit"}
+        fontWeight="bold"
       >
         Faculty: {displayFacultyName}
       </Text>
-      {Array.isArray(course.timings) && course.timings.length > 0 ? (
-        course.timings.map((timing, index) => (
-          <Text key={`${course.id}-timing-${index}`}>
-            {timing.day} {timing.startTime} - {timing.endTime || "N/A"} | Room:{" "}
+      {Array.isArray(slot.timings) && slot.timings.length > 0 ? (
+        slot.timings.map((timing, index) => (
+          <Text
+            className="slot-timings"
+            key={`${course.Name}-timing-${index}`}
+            p="0.14rem"
+          >
+            {timing.day} {timing.startTime} - {timing.endTime} | Room:{" "}
             {timing.room}
           </Text>
         ))
@@ -62,197 +69,264 @@ const CourseCard = React.memo(({ course, isSelected, onSelect }) => {
         <Text>No Timings Available</Text>
       )}
       <Badge
+        className="slot-status"
         colorScheme={
-          course.status === "cleared"
+          status.includes("cleared")
             ? "green"
-            : course.status === "locked"
+            : status === "locked"
             ? "red"
-            : course.status === "in progress"
+            : status === "In Progress"
             ? "yellow"
-            : course.status === "unknown"
-            ? "orange"
-            : course.status === "not offered"
+            : status === "not offered"
             ? "yellow"
-            : course.status === "available"
+            : status === "available"
             ? "blue"
             : "purple"
         }
       >
-        {course.status}{" "}
-        {course.grade === "To be taken" ||
-        course.grade === "Grade" ||
-        course.grade === "N/A" ||
-        !course.grade
-          ? ""
-          : "with " + course.grade}
+        {status}
       </Badge>
     </Card>
   );
-});
+};
 
 const CourseRegistration = ({ courses }) => {
-  // State to track selected slots by unique course card id
   const [selectedSlots, setSelectedSlots] = useState({});
 
-  // Handle selection: Cap to 1 slot per courseCode and unselect others in the same group
-  const handleSelect = useCallback((selectedCourse) => {
-    setSelectedSlots((prevSelected) => {
-      const courseCode = selectedCourse.courseCode;
+  // Initialize courseMap using useMemo to optimize performance
+  const courseMap = useMemo(() => {
+    const map = new Map();
+    courses.forEach((course) => {
+      if (course.CourseCode) {
+        map.set(course.CourseCode, {
+          name: course.Name,
+          status: course.Status,
+          grade: course.Grade,
+        });
+      }
+    });
+    return map;
+  }, [courses]);
 
-      // Deselect all other courses with the same courseCode and select the clicked one
-      const newSelected = { ...prevSelected };
-      Object.keys(newSelected).forEach((key) => {
-        if (newSelected[key].courseCode === courseCode) {
-          delete newSelected[key];
+  const renderPrerequisites = (preRequisites = []) => {
+    return preRequisites.map((prerequisite, index) => {
+      if (prerequisite === "None") {
+        return "None";
+      }
+
+      const courseDetails = courseMap.get(prerequisite);
+      const courseName = courseDetails ? courseDetails.name : prerequisite;
+      const status = courseDetails ? courseDetails.status : "Unknown";
+
+      let color = "red.500";
+      if (status.includes("cleared")) {
+        color = "green.500";
+      } else if (status.includes("In Progress")) {
+        color = "yellow.500";
+      }
+
+      return (
+        <Text as="span" key={index} color={color} mr={2}>
+          {courseName}
+        </Text>
+      );
+    });
+  };
+
+  const checkPrerequisitesStatus = (preRequisites = []) => {
+    let allCleared = true;
+    let anyInProgress = false;
+
+    preRequisites.forEach((prerequisite) => {
+      if (prerequisite !== "None") {
+        console.log(preRequisites);
+        const prereqDetail = courseMap.get(prerequisite);
+        if (prereqDetail) {
+          if (prereqDetail.status.includes("cleared")) {
+            return;
+          } else if (prereqDetail.status.includes("In Progress")) {
+            anyInProgress = true;
+          } else {
+            allCleared = false;
+          }
         }
-      });
+      }
+    });
 
-      // Select the clicked course
-      newSelected[selectedCourse.id] = selectedCourse;
+    return {
+      allCleared,
+      anyInProgress,
+    };
+  };
+
+  const handleSelect = (course, slot) => {
+    setSelectedSlots((prevSelected) => {
+      const courseKey = `${course.Name}-${slot.slotId}`;
+      const newSelected = { ...prevSelected };
+
+      if (newSelected[courseKey]) {
+        delete newSelected[courseKey];
+      } else {
+        newSelected[courseKey] = { course, slot };
+      }
 
       return newSelected;
     });
-  }, []);
+  };
 
   const handleRegister = () => {
     console.log("Registered Courses: ", selectedSlots);
+    // Handle registration logic here
   };
 
-  // Group courses by semester and then by course code
   const groupedBySemester = courses.reduce((acc, course) => {
-    if (!acc[course.semester]) {
-      acc[course.semester] = {};
+    if (!acc[course.Semester]) {
+      acc[course.Semester] = [];
     }
-    if (!acc[course.semester][course.courseCode]) {
-      acc[course.semester][course.courseCode] = [];
-    }
-    acc[course.semester][course.courseCode].push(course);
+    acc[course.Semester].push(course);
     return acc;
   }, {});
 
   return (
-    <Box p={5}>
+    <Box p={5} className="Main">
       <Accordion allowMultiple>
-        {Object.entries(groupedBySemester).map(([semester, semesterCourses]) => {
-          const totalCourses = Object.keys(semesterCourses).length;
-          const completedCourses = Object.values(semesterCourses).filter(
-            (group) => group.some((course) => course.status === "cleared")
-          ).length;
+        {Object.entries(groupedBySemester).map(
+          ([semester, semesterCourses]) => {
+            const totalCourses = semesterCourses.length;
+            const completedCourses = semesterCourses.filter((course) =>
+              (course.Status || "").includes("cleared")
+            ).length;
 
-          return (
-            <AccordionItem key={semester}>
-              <AccordionButton className="accordion-header">
-                <Box flex="1" textAlign="left">
-                  <Heading size="lg">
-                    {semester} - ({completedCourses}/{totalCourses})
-                  </Heading>
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel pb={4}>
-                <Accordion allowMultiple>
-                  {Object.entries(semesterCourses).map(
-                    ([courseCode, grouped], courseIndex) => {
-                      const preRequisite =
-                        grouped[0].preRequisite === "-"
-                          ? "None"
-                          : grouped[0].preRequisite;
-                      const inProgressCourse = grouped.find(
-                        (course) => course.facultyName === "In Progress"
-                      );
-                      const isInProgress = Boolean(inProgressCourse);
-                      const clearedCourse = grouped.find(
-                        (course) => course.status === "cleared"
-                      );
-                      const isCleared = Boolean(clearedCourse);
-                      const clearedGrade = clearedCourse
-                        ? clearedCourse.grade
-                        : null;
-                      const firstCourseCredits = grouped[0].credits || 0;
+            return (
+              <AccordionItem key={semester}>
+                <AccordionButton className="accordion-header">
+                  <Box flex="1" textAlign="left">
+                    <Heading size="lg">
+                      {semester} - ({completedCourses}/{totalCourses})
+                    </Heading>
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+                <AccordionPanel pb={4}>
+                  <Accordion allowMultiple>
+                    {semesterCourses.map((course) => {
+                      const { allCleared, anyInProgress } =
+                        checkPrerequisitesStatus(course.PreRequisites);
+                      let prerequisiteStatusMessage = "";
+                      let badgeColor = "green";
+                      let showCourseClearedMessage = false;
+
+                      if (course.Status.includes("cleared")) {
+                        prerequisiteStatusMessage = `Cleared: ${
+                          courseMap.get(course.CourseCode).grade
+                        }`;
+                        badgeColor = "green";
+                        showCourseClearedMessage = true;
+                      } else if (course.Status.includes("In Progress")) {
+                        prerequisiteStatusMessage = "Currently In Progress";
+                        badgeColor = "yellow";
+                      } else if (!allCleared) {
+                        prerequisiteStatusMessage = "Prerequisites not cleared";
+                        badgeColor = "red";
+                      } else if (anyInProgress) {
+                        prerequisiteStatusMessage = "Prerequisites in progress";
+                        badgeColor = "yellow";
+                      } else if (
+                        course.SLOTS.every(
+                          (slot) => slot.status !== "available"
+                        )
+                      ) {
+                        prerequisiteStatusMessage = "No slots available";
+                        badgeColor = "red";
+                      } else {
+                        prerequisiteStatusMessage = "Available"; // Course is available and prerequisites cleared
+                        badgeColor = "blue";
+                      }
 
                       return (
-                        <AccordionItem key={courseCode}>
+                        <AccordionItem key={course.Name}>
                           <AccordionButton className="accordion-header">
-                            <Box flex="1" textAlign="left">
+                            <Box
+                              className="course-group"
+                              flex="1"
+                              textAlign="left"
+                            >
                               <Heading size="md">
-                                {courseCode} -{" "}
-                                {grouped[0].courseName || "Unnamed Course"}
+                                {course.CourseCode} - {course.Name}
                               </Heading>
-                              <Text>Prerequisites: {preRequisite}</Text>
+                              <Text className="prereq">
+                                Prerequisites:{" "}
+                                {renderPrerequisites(course.PreRequisites)}
+                              </Text>
                               <Text>
-                                <Badge colorScheme="blue" ml={2}>
-                                  Credits: {firstCourseCredits}
+                                <Badge
+                                  className="accordion-badge credits"
+                                  colorScheme="blue"
+                                  ml={2}
+                                >
+                                  Credits: {course.Credits}
                                 </Badge>
                                 <Badge
-                                  className="accordion-badge"
-                                  colorScheme={
-                                    isCleared
-                                      ? "green"
-                                      : isInProgress
-                                      ? "yellow"
-                                      : "orange"
-                                  }
+                                  className="prereq-badge"
+                                  colorScheme={badgeColor}
+                                  ml={2}
                                 >
-                                  {isInProgress
-                                    ? "In Progress"
-                                    : isCleared
-                                    ? "Cleared: " + clearedGrade
-                                    : "Not Cleared"}
+                                  {prerequisiteStatusMessage}
                                 </Badge>
                               </Text>
                             </Box>
                             <AccordionIcon />
                           </AccordionButton>
                           <AccordionPanel pb={4} className="accordion-panel">
-                            {isInProgress ? (
-                              <Text
-                                fontSize="lg"
-                                className="text-in-progress"
-                              >
+                            {showCourseClearedMessage ? (
+                              <Text fontSize="lg" className="text-cleared">
+                                {prerequisiteStatusMessage}
+                              </Text>
+                            ) : (course.Status || "").includes(
+                                "In Progress"
+                              ) ? (
+                              <Text fontSize="lg" className="text-in-progress">
                                 This course is currently in progress
                               </Text>
-                            ) : isCleared ? (
+                            ) : (course.Status || "").includes("cleared") ? (
                               <Text fontSize="lg" className="text-cleared">
-                                This course has already been cleared with:{" "}
-                                {clearedGrade}
+                                {prerequisiteStatusMessage}
                               </Text>
                             ) : (
                               <SimpleGrid
                                 columns={{ base: 1, md: 2, lg: 4 }}
                                 spacing={5}
                               >
-                                {grouped.map((course, index) => {
-                                  // Assign a unique ID to each course card using courseCode and index
-                                  const uniqueId = generateUniqueId(course, index);
-                                  return (
-                                    <CourseCard
-                                      key={uniqueId}
-                                      course={{ ...course, id: uniqueId }} // Ensure each course has a unique id
-                                      isSelected={selectedSlots[uniqueId]} // Track selected state by uniqueId
-                                      onSelect={handleSelect}
-                                    />
-                                  );
-                                })}
+                                {course.SLOTS.map((slot, index) => (
+                                  <CourseCard
+                                    key={`${course.Name}-slot-${index}`}
+                                    course={course}
+                                    slot={slot}
+                                    isSelected={
+                                      !!selectedSlots[
+                                        `${course.Name}-${slot.slotId}`
+                                      ]
+                                    }
+                                    onSelect={handleSelect}
+                                  />
+                                ))}
                               </SimpleGrid>
                             )}
                           </AccordionPanel>
                         </AccordionItem>
                       );
-                    }
-                  )}
-                </Accordion>
-              </AccordionPanel>
-            </AccordionItem>
-          );
-        })}
+                    })}
+                  </Accordion>
+                </AccordionPanel>
+              </AccordionItem>
+            );
+          }
+        )}
       </Accordion>
       <Button
         className="register-button"
         colorScheme="blue"
         onClick={handleRegister}
-        position="fixed"
-        bottom={4}
-        w="full"
       >
         Register
       </Button>
