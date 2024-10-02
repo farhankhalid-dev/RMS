@@ -128,7 +128,9 @@ require('dotenv').config();
   // Transform grouped courses into CourseGroup objects
   const courseGroups = Object.entries(groupedCourses).map(([courseCode, courses]) => {
     const mainCourse = courses[0];
+    let slotIdCounter = 1; // For giving unique slotId
     const slots = courses.map(course => ({
+      slotId: slotIdCounter++,
       timings: course.timings,
       facultyName: course.facultyName,
       status: course.status
@@ -157,17 +159,55 @@ require('dotenv').config();
         Name: mainCourse.courseName,
         CourseCode: courseCode,
         Status: status,
-        Semester: mainCourse.semester,
         PreRequisites: preRequisites,
         Credits: mainCourse.credits,
         SLOTS: slots,
-        Grade: grade
+        Grade: grade,
+        Semester: mainCourse.semester // Keep this for grouping, we'll remove it later
     };
   });
 
-  const jsonFilePath = './courses.json';
-  fs.writeFileSync(jsonFilePath, JSON.stringify(courseGroups, null, 2));
-  console.log(`Data has been saved to ${jsonFilePath}`);
+  // Group courses by semester
+  const semesterGroups = courseGroups.reduce((acc, course) => {
+    if (!acc[course.Semester]) {
+      acc[course.Semester] = [];
+    }
+    // Create a copy of the course object without the Semester property
+    const { Semester, ...courseWithoutSemester } = course;
+    acc[course.Semester].push(courseWithoutSemester);
+    return acc;
+  }, {});
+
+  // Convert to array and sort
+  const sortedSemesters = Object.entries(semesterGroups).map(([semester, courses]) => ({
+    semester,
+    courses
+  })).sort((a, b) => {
+    // Helper function to extract number from semester string
+    const getSemesterNumber = (sem) => {
+      const match = sem.match(/\d+/);
+      return match ? parseInt(match[0]) : Infinity;
+    };
+
+    // Check for special cases first
+    if (a.semester.toLowerCase().includes('depth elective')) return 1;
+    if (b.semester.toLowerCase().includes('depth elective')) return -1;
+
+    // Sort numerically if both are numbered semesters
+    const aNum = getSemesterNumber(a.semester);
+    const bNum = getSemesterNumber(b.semester);
+    
+    if (isFinite(aNum) && isFinite(bNum)) {
+      return aNum - bNum;
+    }
+
+    // If one or both don't have numbers, sort alphabetically
+    return a.semester.localeCompare(b.semester);
+  });
+
+  const jsonFilePath = './grouped_courses.json';
+  fs.writeFileSync(jsonFilePath, JSON.stringify(sortedSemesters, null, 2));
+  console.log(`Grouped courses have been saved to ${jsonFilePath}`);
 
   await browser.close();
 })();

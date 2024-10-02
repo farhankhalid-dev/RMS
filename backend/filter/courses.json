@@ -10,7 +10,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -29,7 +28,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -48,7 +46,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -67,7 +64,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -86,7 +82,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -105,7 +100,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -124,7 +118,6 @@
     "Credits": 2,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -143,7 +136,6 @@
     "Credits": 2,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -162,7 +154,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -181,7 +172,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -200,7 +190,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -219,7 +208,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -238,7 +226,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "SUN",
@@ -251,7 +238,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "SUN",
@@ -264,7 +250,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "SAT",
@@ -277,7 +262,6 @@
         "status": "locked"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "MON",
@@ -303,7 +287,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -322,7 +305,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -342,7 +324,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -362,7 +343,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -381,7 +361,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -400,7 +379,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "MON",
@@ -425,7 +403,6 @@
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "MON",
@@ -450,7 +427,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "MON",
@@ -475,7 +451,6 @@
         "status": "locked"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "MON",
@@ -500,7 +475,6 @@
         "status": "available"
       },
       {
-        "slotId": 5,
         "timings": [
           {
             "day": "MON",
@@ -522,10 +496,9 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "locked"
+        "status": "available"
       },
       {
-        "slotId": 6,
         "timings": [
           {
             "day": "MON",
@@ -547,7 +520,7 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "locked"
+        "status": "available"
       }
     ],
     "Grade": "N/A"
@@ -563,7 +536,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -582,7 +554,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -601,7 +572,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "SUN",
@@ -614,7 +584,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "MON",
@@ -627,7 +596,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "MON",
@@ -640,7 +608,6 @@
         "status": "locked"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "FRI",
@@ -653,7 +620,6 @@
         "status": "locked"
       },
       {
-        "slotId": 5,
         "timings": [
           {
             "day": "SAT",
@@ -666,7 +632,6 @@
         "status": "locked"
       },
       {
-        "slotId": 6,
         "timings": [
           {
             "day": "WED",
@@ -679,7 +644,6 @@
         "status": "locked"
       },
       {
-        "slotId": 7,
         "timings": [
           {
             "day": "SAT",
@@ -689,10 +653,9 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "available"
+        "status": "locked"
       },
       {
-        "slotId": 8,
         "timings": [
           {
             "day": "SAT",
@@ -705,7 +668,6 @@
         "status": "locked"
       },
       {
-        "slotId": 9,
         "timings": [
           {
             "day": "SAT",
@@ -718,7 +680,6 @@
         "status": "locked"
       },
       {
-        "slotId": 10,
         "timings": [
           {
             "day": "SAT",
@@ -744,7 +705,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -755,7 +715,7 @@
   {
     "Name": "DATA STRUCTURES AND ALGORITHMS (LAB)",
     "CourseCode": "CSC232-L",
-    "Status": "cleared",
+    "Status": "In Progress",
     "Semester": "Semester - 4",
     "PreRequisites": [
       "CSC231"
@@ -763,13 +723,12 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
-        "facultyName": "Already cleared",
-        "status": "cleared"
+        "facultyName": "In Progress",
+        "status": "unknown"
       }
     ],
-    "Grade": "A"
+    "Grade": "N/A"
   },
   {
     "Name": "DISCRETE STRUCTURES",
@@ -782,7 +741,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -802,7 +760,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -822,7 +779,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -841,7 +797,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "TUE",
@@ -854,7 +809,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "MON",
@@ -879,7 +833,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "MON",
@@ -904,7 +857,6 @@
         "status": "locked"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "MON",
@@ -942,7 +894,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "MON",
@@ -955,7 +906,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "SAT",
@@ -968,7 +918,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "WED",
@@ -981,7 +930,6 @@
         "status": "locked"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "MON",
@@ -991,10 +939,9 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "available"
+        "status": "locked"
       },
       {
-        "slotId": 5,
         "timings": [
           {
             "day": "SAT",
@@ -1007,7 +954,6 @@
         "status": "locked"
       },
       {
-        "slotId": 6,
         "timings": [
           {
             "day": "SAT",
@@ -1020,7 +966,6 @@
         "status": "locked"
       },
       {
-        "slotId": 7,
         "timings": [
           {
             "day": "SAT",
@@ -1033,7 +978,6 @@
         "status": "locked"
       },
       {
-        "slotId": 8,
         "timings": [
           {
             "day": "SAT",
@@ -1043,10 +987,9 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "available"
+        "status": "locked"
       },
       {
-        "slotId": 9,
         "timings": [
           {
             "day": "SAT",
@@ -1072,7 +1015,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -1091,7 +1033,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -1110,7 +1051,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -1130,7 +1070,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "WED",
@@ -1149,7 +1088,6 @@
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "TUE",
@@ -1168,7 +1106,6 @@
         "status": "available"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "TUE",
@@ -1187,7 +1124,6 @@
         "status": "available"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "TUE",
@@ -1206,7 +1142,6 @@
         "status": "available"
       },
       {
-        "slotId": 5,
         "timings": [
           {
             "day": "MON",
@@ -1230,7 +1165,7 @@
   {
     "Name": "DATABASE MANAGEMENT SYSTEMS (LAB)",
     "CourseCode": "CSC331-L",
-    "Status": "locked",
+    "Status": "available",
     "Semester": "Semester - 5",
     "PreRequisites": [
       "CSC222",
@@ -1239,7 +1174,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "WED",
@@ -1249,10 +1183,9 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "locked"
+        "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "TUE",
@@ -1265,7 +1198,6 @@
         "status": "available"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "MON",
@@ -1278,7 +1210,6 @@
         "status": "available"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "THU",
@@ -1291,7 +1222,6 @@
         "status": "available"
       },
       {
-        "slotId": 5,
         "timings": [
           {
             "day": "TUE",
@@ -1309,7 +1239,7 @@
   {
     "Name": "DESIGN & ANALYSIS OF ALGORITHMS",
     "CourseCode": "CSC332",
-    "Status": "cleared",
+    "Status": "In Progress",
     "Semester": "Semester - 5",
     "PreRequisites": [
       "CSC232"
@@ -1317,13 +1247,12 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
-        "facultyName": "Already cleared",
-        "status": "cleared"
+        "facultyName": "In Progress",
+        "status": "unknown"
       }
     ],
-    "Grade": "B"
+    "Grade": "N/A"
   },
   {
     "Name": "INTRODUCTION TO PYTHON",
@@ -1336,7 +1265,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -1355,7 +1283,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "TUE",
@@ -1374,7 +1301,6 @@
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "THU",
@@ -1393,7 +1319,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "THU",
@@ -1412,7 +1337,6 @@
         "status": "available"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "THU",
@@ -1431,7 +1355,6 @@
         "status": "available"
       },
       {
-        "slotId": 5,
         "timings": [
           {
             "day": "THU",
@@ -1463,7 +1386,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "THU",
@@ -1476,7 +1398,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "WED",
@@ -1489,7 +1410,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "WED",
@@ -1502,7 +1422,6 @@
         "status": "locked"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "TUE",
@@ -1515,20 +1434,6 @@
         "status": "locked"
       },
       {
-        "slotId": 5,
-        "timings": [
-          {
-            "day": "THU",
-            "startTime": "08:30",
-            "endTime": "11:30",
-            "room": "E-203"
-          }
-        ],
-        "facultyName": "IMRANA ARIF",
-        "status": "available"
-      },
-      {
-        "slotId": 6,
         "timings": [
           {
             "day": "SAT",
@@ -1538,10 +1443,9 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "available"
+        "status": "locked"
       },
       {
-        "slotId": 7,
         "timings": [
           {
             "day": "SAT",
@@ -1567,7 +1471,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "TUE",
@@ -1580,7 +1483,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "WED",
@@ -1593,7 +1495,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "THU",
@@ -1606,7 +1507,6 @@
         "status": "locked"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "SAT",
@@ -1619,7 +1519,6 @@
         "status": "locked"
       },
       {
-        "slotId": 5,
         "timings": [
           {
             "day": "MON",
@@ -1632,7 +1531,6 @@
         "status": "locked"
       },
       {
-        "slotId": 6,
         "timings": [
           {
             "day": "TUE",
@@ -1645,7 +1543,6 @@
         "status": "locked"
       },
       {
-        "slotId": 7,
         "timings": [
           {
             "day": "THU",
@@ -1658,7 +1555,6 @@
         "status": "locked"
       },
       {
-        "slotId": 8,
         "timings": [
           {
             "day": "TUE",
@@ -1671,20 +1567,6 @@
         "status": "locked"
       },
       {
-        "slotId": 9,
-        "timings": [
-          {
-            "day": "FRI",
-            "startTime": "08:30",
-            "endTime": "11:30",
-            "room": "E-11-05"
-          }
-        ],
-        "facultyName": "SHEIKH MUHAMMAD ABDULLAH",
-        "status": "available"
-      },
-      {
-        "slotId": 10,
         "timings": [
           {
             "day": "SAT",
@@ -1694,7 +1576,7 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "available"
+        "status": "locked"
       }
     ],
     "Grade": "N/A"
@@ -1710,7 +1592,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Pre Requisite not cleared",
         "status": "not offered"
@@ -1729,31 +1610,26 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Refer below for Electives",
         "status": "unknown"
       },
       {
-        "slotId": 2,
         "timings": [],
         "facultyName": "Refer below for Electives",
         "status": "unknown"
       },
       {
-        "slotId": 3,
         "timings": [],
         "facultyName": "Refer below for Electives",
         "status": "unknown"
       },
       {
-        "slotId": 4,
         "timings": [],
         "facultyName": "Refer below for Electives",
         "status": "unknown"
       },
       {
-        "slotId": 5,
         "timings": [],
         "facultyName": "Refer below for Electives",
         "status": "unknown"
@@ -1772,7 +1648,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Already cleared",
         "status": "cleared"
@@ -1791,7 +1666,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "THU",
@@ -1804,7 +1678,6 @@
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "THU",
@@ -1817,7 +1690,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "FRI",
@@ -1827,7 +1699,7 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "locked"
+        "status": "available"
       }
     ],
     "Grade": "N/A"
@@ -1843,7 +1715,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "THU",
@@ -1856,7 +1727,6 @@
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "WED",
@@ -1869,7 +1739,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "FRI",
@@ -1895,13 +1764,11 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "FACULTY MEMBER",
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [],
         "facultyName": "FACULTY MEMBER",
         "status": "available"
@@ -1920,7 +1787,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "WED",
@@ -1933,7 +1799,6 @@
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "THU",
@@ -1946,7 +1811,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "THU",
@@ -1974,7 +1838,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "FRI",
@@ -1987,7 +1850,6 @@
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "FRI",
@@ -2000,7 +1862,6 @@
         "status": "available"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "THU",
@@ -2026,7 +1887,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "MON",
@@ -2039,7 +1899,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "SAT",
@@ -2049,10 +1908,9 @@
           }
         ],
         "facultyName": "DEEPAK KUMAR",
-        "status": "available"
+        "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "WED",
@@ -2065,7 +1923,6 @@
         "status": "locked"
       },
       {
-        "slotId": 4,
         "timings": [
           {
             "day": "WED",
@@ -2078,7 +1935,6 @@
         "status": "locked"
       },
       {
-        "slotId": 5,
         "timings": [
           {
             "day": "FRI",
@@ -2091,20 +1947,6 @@
         "status": "locked"
       },
       {
-        "slotId": 6,
-        "timings": [
-          {
-            "day": "THU",
-            "startTime": "18:30",
-            "endTime": "21:30",
-            "room": "E-11-03"
-          }
-        ],
-        "facultyName": "DR. MARIUM SARA MINHAS",
-        "status": "locked"
-      },
-      {
-        "slotId": 7,
         "timings": [
           {
             "day": "SAT",
@@ -2117,7 +1959,6 @@
         "status": "locked"
       },
       {
-        "slotId": 8,
         "timings": [
           {
             "day": "SAT",
@@ -2130,7 +1971,6 @@
         "status": "locked"
       },
       {
-        "slotId": 9,
         "timings": [
           {
             "day": "SAT",
@@ -2156,7 +1996,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Pre Requisite not cleared",
         "status": "not offered"
@@ -2176,7 +2015,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "WED",
@@ -2189,7 +2027,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "FRI",
@@ -2202,7 +2039,6 @@
         "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "FRI",
@@ -2228,7 +2064,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2247,7 +2082,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2266,7 +2100,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2285,7 +2118,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "WED",
@@ -2311,7 +2143,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2330,7 +2161,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2341,7 +2171,7 @@
   {
     "Name": "CLOUD COMPUTING & VIRTUALIZATION (DE)",
     "CourseCode": "CS423",
-    "Status": "locked",
+    "Status": "available",
     "Semester": "Depth Elective",
     "PreRequisites": [
       "None"
@@ -2349,7 +2179,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "MON",
@@ -2365,7 +2194,7 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "locked"
+        "status": "available"
       }
     ],
     "Grade": "N/A"
@@ -2381,7 +2210,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2400,7 +2228,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2419,7 +2246,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2438,7 +2264,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2457,7 +2282,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2476,7 +2300,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2495,7 +2318,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2514,7 +2336,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "WED",
@@ -2527,7 +2348,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "THU",
@@ -2537,10 +2357,9 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "available"
+        "status": "locked"
       },
       {
-        "slotId": 3,
         "timings": [
           {
             "day": "WED",
@@ -2566,7 +2385,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "WED",
@@ -2598,7 +2416,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "THU",
@@ -2624,7 +2441,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "MON",
@@ -2637,7 +2453,6 @@
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "MON",
@@ -2663,7 +2478,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2682,7 +2496,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2701,7 +2514,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2720,13 +2532,11 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
       },
       {
-        "slotId": 2,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2745,7 +2555,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "THU",
@@ -2771,7 +2580,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "MON",
@@ -2797,7 +2605,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2816,7 +2623,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "FRI",
@@ -2842,7 +2648,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2861,7 +2666,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2880,7 +2684,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2899,7 +2702,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "WED",
@@ -2931,7 +2733,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "FRI",
@@ -2957,7 +2758,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2976,7 +2776,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -2995,7 +2794,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3014,7 +2812,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3033,7 +2830,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "TUE",
@@ -3046,7 +2842,6 @@
         "status": "locked"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "WED",
@@ -3072,7 +2867,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3091,7 +2885,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3110,7 +2903,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3129,7 +2921,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "THU",
@@ -3155,7 +2946,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "TUE",
@@ -3181,7 +2971,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3200,7 +2989,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3219,7 +3007,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3238,7 +3025,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "THU",
@@ -3256,7 +3042,7 @@
   {
     "Name": "SOFTWARE QUALITY ASSURANCE (DE)",
     "CourseCode": "CS417",
-    "Status": "locked",
+    "Status": "available",
     "Semester": "Depth Elective",
     "PreRequisites": [
       "None"
@@ -3264,7 +3050,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "MON",
@@ -3280,10 +3065,9 @@
           }
         ],
         "facultyName": "FACULTY MEMBER",
-        "status": "locked"
+        "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "MON",
@@ -3315,7 +3099,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [
           {
             "day": "TUE",
@@ -3328,7 +3111,6 @@
         "status": "available"
       },
       {
-        "slotId": 2,
         "timings": [
           {
             "day": "THU",
@@ -3354,7 +3136,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3373,7 +3154,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3392,7 +3172,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3411,7 +3190,6 @@
     "Credits": 1,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
@@ -3430,7 +3208,6 @@
     "Credits": 3,
     "SLOTS": [
       {
-        "slotId": 1,
         "timings": [],
         "facultyName": "Course not Offered",
         "status": "not offered"
