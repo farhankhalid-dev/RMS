@@ -17,6 +17,8 @@
   cursor: pointer;
   font-size: 1.2em;
   font-weight: bold;
+  position: relative;
+
 }
 
 .semester-header:hover {
@@ -40,6 +42,7 @@
   position: relative;
 }
 
+
 .course-header::after, .semester-header::after {
   content: '+';
   position: absolute;
@@ -54,6 +57,7 @@
 .course-header.open::after, .semester-header.open::after {
   transform: translateY(-50%) rotate(-45deg);
 }
+
 
 .course-title {
   font-size: 1.1em;

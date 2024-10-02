@@ -42,20 +42,34 @@ const CourseCard = React.memo(
     const status = slot.status || "Unknown";
 
     const handleClick = useCallback(() => {
-      if (status === "available" && !isLoading && clashingCourses.length === 0) {
+      if (
+        status === "available" &&
+        !isLoading &&
+        clashingCourses.length === 0
+      ) {
         setIsLoading(true);
         setTimeout(() => {
           onSelect(course.CourseCode, id, slot);
           setIsLoading(false);
         }, 300);
       }
-    }, [course.CourseCode, id, onSelect, status, slot, isLoading, clashingCourses]);
+    }, [
+      course.CourseCode,
+      id,
+      onSelect,
+      status,
+      slot,
+      isLoading,
+      clashingCourses,
+    ]);
 
     const isSelectable = status === "available" && clashingCourses.length === 0;
 
-    const cardClass = `course-card ${isSelected ? "selected" : ""} ${status.toLowerCase()} ${
-      clashingCourses.length > 0 ? "clashing" : ""
-    } ${isLoading ? "loading" : ""} ${!isSelectable ? "unselectable" : ""}`;
+    const cardClass = `course-card ${
+      isSelected ? "selected" : ""
+    } ${status.toLowerCase()} ${clashingCourses.length > 0 ? "clashing" : ""} ${
+      isLoading ? "loading" : ""
+    } ${!isSelectable ? "unselectable" : ""}`;
 
     return (
       <div className={cardClass} onClick={handleClick}>
@@ -194,7 +208,9 @@ const CourseRegistrationGeneric = () => {
   );
 
   const checkCourseAvailability = useCallback((course) => {
-    return course.SLOTS && course.SLOTS.some(slot => slot.status === "available");
+    return (
+      course.SLOTS && course.SLOTS.some((slot) => slot.status === "available")
+    );
   }, []);
 
   const handleRegister = useCallback(() => {
@@ -259,7 +275,9 @@ const CourseRegistrationGeneric = () => {
             className="semester-accordion"
           >
             <div
-              className="semester-header"
+              className={`semester-header ${
+                openSemesters[semesterIndex] ? "open" : ""
+              }`}
               onClick={() => toggleSemester(semesterIndex)}
             >
               <span>
