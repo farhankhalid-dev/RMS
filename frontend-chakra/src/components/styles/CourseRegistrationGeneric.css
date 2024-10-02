@@ -188,7 +188,6 @@
 
 .course-card.clashing {
   box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.5);
-  animation: clash-glow 1.5s infinite alternate;
 }
 
 @keyframes clash-glow {
