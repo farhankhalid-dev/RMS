@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from "react";
 import coursesData from "../data/courses.json";
+import StudentInfo from "./StudentInfo.jsx";
 import "./styles/CourseRegistrationGeneric.css";
 
 const generateUniqueId = (course, slot) =>
@@ -259,147 +260,155 @@ const CourseRegistrationGeneric = () => {
   };
 
   return (
-    <div className="course-registration">
-      <button className="toggle-button" onClick={toggleAllSemesters}>
-        Toggle All Semesters
-      </button>
-      {coursesData.map((semester, semesterIndex) => {
-        const totalCourses = semester.courses.length;
-        const completedCourses = semester.courses.filter((course) =>
-          (course.Status || "").includes("cleared")
-        ).length;
+    <div className="main">
+      <StudentInfo />
 
-        return (
-          <div
-            key={`semester-${semesterIndex}-${semester.semester}`}
-            className="semester-accordion"
-          >
+      <div className="course-registration">
+        <button className="toggle-button" onClick={toggleAllSemesters}>
+          Toggle All Semesters
+        </button>
+        {coursesData.map((semester, semesterIndex) => {
+          const totalCourses = semester.courses.length;
+          const completedCourses = semester.courses.filter((course) =>
+            (course.Status || "").includes("cleared")
+          ).length;
+
+          return (
             <div
-              className={`semester-header ${
-                openSemesters[semesterIndex] ? "open" : ""
-              }`}
-              onClick={() => toggleSemester(semesterIndex)}
+              key={`semester-${semesterIndex}-${semester.semester}`}
+              className="semester-accordion"
             >
-              <span>
-                {semester.semester} - ({completedCourses}/{totalCourses})
-              </span>
-            </div>
-            {openSemesters[semesterIndex] && (
-              <div className="semester-content">
-                <button
-                  className="toggle-button"
-                  onClick={() => toggleAllCourses(semesterIndex)}
-                >
-                  Toggle All Courses
-                </button>
-                {semester.courses.map((course, courseIndex) => {
-                  const { allCleared, anyInProgress } =
-                    checkPrerequisitesStatus(course.PreRequisites);
-                  let prerequisiteStatusMessage = "";
-                  let statusClassName = "";
-
-                  const courseStatus = course.Status || "unknown";
-                  const isAvailable = checkCourseAvailability(course);
-
-                  if (courseStatus.includes("cleared")) {
-                    prerequisiteStatusMessage = `Cleared: ${
-                      course.Grade || "N/A"
-                    }`;
-                    statusClassName = "status-cleared";
-                  } else if (courseStatus.includes("In Progress")) {
-                    prerequisiteStatusMessage = "Currently In Progress";
-                    statusClassName = "status-in-progress";
-                  } else if (!allCleared) {
-                    prerequisiteStatusMessage = "Prerequisites not cleared";
-                    statusClassName = "status-not-cleared";
-                  } else if (anyInProgress) {
-                    prerequisiteStatusMessage = "Prerequisites in progress";
-                    statusClassName = "status-in-progress";
-                  } else if (!isAvailable) {
-                    prerequisiteStatusMessage = "No slots available";
-                    statusClassName = "status-not-available";
-                  } else {
-                    prerequisiteStatusMessage = "Available";
-                    statusClassName = "status-available";
-                  }
-
-                  return (
-                    <div
-                      key={`course-${courseIndex}-${course.CourseCode}`}
-                      className="course-accordion"
-                    >
-                      <div
-                        className={`course-header ${
-                          openCourses[`${semesterIndex}-${course.CourseCode}`]
-                            ? "open"
-                            : ""
-                        }`}
-                        onClick={() =>
-                          toggleCourse(semesterIndex, course.CourseCode)
-                        }
-                      >
-                        <div className="course-title">
-                          {course.CourseCode} - {course.Name}
-                        </div>
-                        <div className="course-info">
-                          <div className="prereq">
-                            Prerequisites:{" "}
-                            {renderPrerequisites(course.PreRequisites)}
-                          </div>
-                          <div className="course-meta">
-                            <span className="credits-badge">
-                              Credits: {course.Credits}
-                            </span>
-                            <span className={`status-badge ${statusClassName}`}>
-                              {prerequisiteStatusMessage}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      {openCourses[`${semesterIndex}-${course.CourseCode}`] && (
-                        <div className="course-content">
-                          {courseStatus.includes("cleared") ||
-                          courseStatus.includes("In Progress") ? (
-                            <div className="course-message">
-                              {prerequisiteStatusMessage}
-                            </div>
-                          ) : (
-                            <div className="course-slots">
-                              {(course.SLOTS || []).map((slot, slotIndex) => {
-                                const id = generateUniqueId(course, slot);
-                                return (
-                                  <CourseCard
-                                    key={`slot-${slotIndex}-${id}`}
-                                    id={id}
-                                    course={course}
-                                    slot={slot}
-                                    isSelected={
-                                      selectedSlots[course.CourseCode]?.id ===
-                                      id
-                                    }
-                                    onSelect={handleSelect}
-                                    clashingCourses={getClashingCourses(
-                                      course.CourseCode,
-                                      slot
-                                    )}
-                                  />
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+              <div
+                className={`semester-header ${
+                  openSemesters[semesterIndex] ? "open" : ""
+                }`}
+                onClick={() => toggleSemester(semesterIndex)}
+              >
+                <span>
+                  {semester.semester} - ({completedCourses}/{totalCourses})
+                </span>
               </div>
-            )}
-          </div>
-        );
-      })}
-      <button className="register-button" onClick={handleRegister}>
-        Register
-      </button>
+              {openSemesters[semesterIndex] && (
+                <div className="semester-content">
+                  <button
+                    className="toggle-button"
+                    onClick={() => toggleAllCourses(semesterIndex)}
+                  >
+                    Toggle All Courses
+                  </button>
+                  {semester.courses.map((course, courseIndex) => {
+                    const { allCleared, anyInProgress } =
+                      checkPrerequisitesStatus(course.PreRequisites);
+                    let prerequisiteStatusMessage = "";
+                    let statusClassName = "";
+
+                    const courseStatus = course.Status || "unknown";
+                    const isAvailable = checkCourseAvailability(course);
+
+                    if (courseStatus.includes("cleared")) {
+                      prerequisiteStatusMessage = `Cleared: ${
+                        course.Grade || "N/A"
+                      }`;
+                      statusClassName = "status-cleared";
+                    } else if (courseStatus.includes("In Progress")) {
+                      prerequisiteStatusMessage = "Currently In Progress";
+                      statusClassName = "status-in-progress";
+                    } else if (!allCleared) {
+                      prerequisiteStatusMessage = "Prerequisites not cleared";
+                      statusClassName = "status-not-cleared";
+                    } else if (anyInProgress) {
+                      prerequisiteStatusMessage = "Prerequisites in progress";
+                      statusClassName = "status-in-progress";
+                    } else if (!isAvailable) {
+                      prerequisiteStatusMessage = "No slots available";
+                      statusClassName = "status-not-available";
+                    } else {
+                      prerequisiteStatusMessage = "Available";
+                      statusClassName = "status-available";
+                    }
+
+                    return (
+                      <div
+                        key={`course-${courseIndex}-${course.CourseCode}`}
+                        className="course-accordion"
+                      >
+                        <div
+                          className={`course-header ${
+                            openCourses[`${semesterIndex}-${course.CourseCode}`]
+                              ? "open"
+                              : ""
+                          }`}
+                          onClick={() =>
+                            toggleCourse(semesterIndex, course.CourseCode)
+                          }
+                        >
+                          <div className="course-title">
+                            {course.CourseCode} - {course.Name}
+                          </div>
+                          <div className="course-info">
+                            <div className="prereq">
+                              Prerequisites:{" "}
+                              {renderPrerequisites(course.PreRequisites)}
+                            </div>
+                            <div className="course-meta">
+                              <span className="credits-badge">
+                                Credits: {course.Credits}
+                              </span>
+                              <span
+                                className={`status-badge ${statusClassName}`}
+                              >
+                                {prerequisiteStatusMessage}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        {openCourses[
+                          `${semesterIndex}-${course.CourseCode}`
+                        ] && (
+                          <div className="course-content">
+                            {courseStatus.includes("cleared") ||
+                            courseStatus.includes("In Progress") ? (
+                              <div className="course-message">
+                                {prerequisiteStatusMessage}
+                              </div>
+                            ) : (
+                              <div className="course-slots">
+                                {(course.SLOTS || []).map((slot, slotIndex) => {
+                                  const id = generateUniqueId(course, slot);
+                                  return (
+                                    <CourseCard
+                                      key={`slot-${slotIndex}-${id}`}
+                                      id={id}
+                                      course={course}
+                                      slot={slot}
+                                      isSelected={
+                                        selectedSlots[course.CourseCode]?.id ===
+                                        id
+                                      }
+                                      onSelect={handleSelect}
+                                      clashingCourses={getClashingCourses(
+                                        course.CourseCode,
+                                        slot
+                                      )}
+                                    />
+                                  );
+                                })}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          );
+        })}
+        <button className="register-button" onClick={handleRegister}>
+          Register
+        </button>
+      </div>
     </div>
   );
 };
