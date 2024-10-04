@@ -1,13 +1,34 @@
 .course-registration {
   font-family: Arial, sans-serif;
-  max-width: 1200px;
+  display: flex;
   margin: 0 auto;
   padding: 20px;
+  height: 75vh /* Adjust based on your layout */
+}
+
+.semester-list {
+  width: 20%;
+  overflow-y: auto;
+  padding-right: 20px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.semester-title{
+  position: relative;
+  left: 45%;
+  font-size: 2rem;
+}
+
+.course-content-area {
+  width: 80%;
+  padding-left: 20px;
+  overflow-y:scroll;
+  overflow-x: hidden;
 }
 
 .semester-accordion {
-  background-color: #F5F5F5 ;
-  margin-bottom: 20px;
+  background-color: #F5F5F5;
+  margin-bottom: 10px;
   border: 1px solid #e0e0e0;
   border-radius: 25px;
 }
@@ -16,18 +37,29 @@
   padding: 15px;
   border-radius: 15px;
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: bold;
   position: relative;
-
 }
 
 .semester-header:hover {
   background-color: #e0e0e0;
 }
 
-.semester-content {
-  padding: 15px;
+.semester-header::after {
+  content: '+';
+  position: absolute;
+  right: 15px;
+  font-size: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+.semester-header.open{
+  background-color: #e0e0e0;
+}
+.semester-header.open::after {
+  transform: translateY(-50%) rotate(-45deg);
 }
 
 .course-accordion {
@@ -35,7 +67,6 @@
   border-radius: 25px;
   margin-bottom: 15px;
   border: 1px solid #e0e0e0;
-  border-radius: 5px;
 }
 
 .course-header {
@@ -45,22 +76,19 @@
   position: relative;
 }
 
-
-.course-header::after, .semester-header::after {
+.course-header::after {
   content: '+';
   position: absolute;
-  right: 25px;
-  font-size: 1.5rem;
-  font-weight: bold;
+  right: 15px;
+  font-size: 1.2rem;
   top: 50%;
   transform: translateY(-50%);
   transition: transform 0.3s ease;
 }
 
-.course-header.open::after, .semester-header.open::after {
+.course-header.open::after {
   transform: translateY(-50%) rotate(-45deg);
 }
-
 
 .course-title {
   font-size: 1.1em;
@@ -227,20 +255,6 @@
   background-color: #0d47a1;
 }
 
-.toggle-button {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 5px 10px;
-  margin: 10px 0;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.toggle-button:hover {
-  background-color: #e0e0e0;
-}
-
 .course-card .spinner {
   position: absolute;
   top: 50%;
@@ -272,12 +286,23 @@
   100% { transform: rotate(360deg); }
 }
 
-details summary {
-  list-style: none;
+.placeholder-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.2em;
+  color: #757575;
+  text-align: center;
+  padding: 20px;
 }
 
-details summary::-webkit-details-marker {
-  display: none;
+.placeholder-text ul {
+  text-align: left;
+  margin-top: 20px;
 }
 
-
+.placeholder-text li {
+  margin-bottom: 10px;
+}
