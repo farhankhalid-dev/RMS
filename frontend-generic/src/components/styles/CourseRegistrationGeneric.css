@@ -150,7 +150,7 @@
   margin: 0.5rem;
 }
 
-.course-card:hover {
+.course-card:not(.unselectable):hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 15px rgba(0,0,0,0.1);
 }
