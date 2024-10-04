@@ -74,15 +74,15 @@ const CourseCard = React.memo(
 
     return (
       <div className={cardClass} onClick={handleClick}>
-        <div className="spinner"></div>
         <div className="card-content">
-          <div className="slot-instructor">Faculty: {displayFacultyName}</div>
+          <div className="faculty-info">Faculty: {displayFacultyName}</div>
           <div className="timings-container">
             {Array.isArray(slot.timings) && slot.timings.length > 0 ? (
               slot.timings.map((timing, index) => (
                 <div className="slot-timings" key={`${id}-timing-${index}`}>
-                  {timing.day} {timing.startTime} - {timing.endTime} | Room:{" "}
-                  {timing.room || "TBA"}
+                  <span className="slot-day">{timing.day.slice(0, 3)}</span>
+                  <span className="slot-time">{timing.startTime} - {timing.endTime}</span>
+                  <span className="slot-room">Room: {timing.room || "TBA"}</span>
                 </div>
               ))
             ) : (
@@ -90,7 +90,7 @@ const CourseCard = React.memo(
             )}
           </div>
           <div className="status-container">
-            <span className="slot-status">{status}</span>
+            <span className={`slot-status ${status.toLowerCase()}`}>{status}</span>
             <input
               type="radio"
               checked={isSelected}
@@ -104,6 +104,7 @@ const CourseCard = React.memo(
             Clashes with: {clashingCourses.join(", ")}
           </div>
         )}
+        <div className="spinner"></div>
       </div>
     );
   }
@@ -232,8 +233,6 @@ const CourseRegistrationGeneric = () => {
 
   return (
     <div className="main">
-      <StudentInfo />
-
       <div className="course-registration">
         <div className="semester-list">
           {coursesData.map((semester, semesterIndex) => {
@@ -245,14 +244,10 @@ const CourseRegistrationGeneric = () => {
             return (
               <div
                 key={`semester-${semesterIndex}-${semester.semester}`}
-                className="semester-accordion"
+                className={`semester-accordion ${selectedSemester === semesterIndex ? "selected" : ""}`}
+                onClick={() => toggleSemester(semesterIndex)}
               >
-                <div
-                  className={`semester-header ${
-                    selectedSemester === semesterIndex ? "open" : ""
-                  }`}
-                  onClick={() => toggleSemester(semesterIndex)}
-                >
+                <div className="semester-header">
                   <span>
                     {semester.semester} - ({completedCourses}/{totalCourses})
                   </span>
@@ -265,7 +260,7 @@ const CourseRegistrationGeneric = () => {
         <div className="course-content-area">
           {selectedSemester !== null ? (
             <div className="semester-content">
-            <h2 className="semester-title">{coursesData[selectedSemester].semester}</h2>
+              <h2 className="semester-title sticky">{coursesData[selectedSemester].semester}</h2>
               {coursesData[selectedSemester].courses.map((course, courseIndex) => {
                 const { allCleared, anyInProgress } =
                   checkPrerequisitesStatus(course.PreRequisites);
@@ -303,7 +298,7 @@ const CourseRegistrationGeneric = () => {
                     className="course-accordion"
                   >
                     <div
-                      className={`course-header ${
+                      className={`course-header sticky ${
                         openCourses[course.CourseCode] ? "open" : ""
                       }`}
                       onClick={() => toggleCourse(course.CourseCode)}
@@ -364,15 +359,8 @@ const CourseRegistrationGeneric = () => {
               })}
             </div>
           ) : (
-            <div className="placeholder-text">
-              <p>Select a semester from the left to view available courses. Here are some tips for registration:</p>
-              <ul>
-                <li>Review your degree requirements before selecting courses.</li>
-                <li>Check for any prerequisites before registering for a course.</li>
-                <li>Balance your course load across different subject areas.</li>
-                <li>Consider your schedule and avoid time conflicts.</li>
-                <li>Don't hesitate to reach out to your academic advisor for guidance.</li>
-              </ul>
+            <div className="placeholder">
+              <StudentInfo />
             </div>
           )}
         </div>
