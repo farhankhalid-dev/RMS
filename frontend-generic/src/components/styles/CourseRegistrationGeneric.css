@@ -246,6 +246,7 @@ body {
   margin-bottom: 1rem;
   color: var(--accent-color);
   font-size: 1.1em;
+  height: 2.6em; /* Set a fixed height for at least two lines */
 }
 
 .timings-container {
