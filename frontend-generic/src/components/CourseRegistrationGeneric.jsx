@@ -283,7 +283,11 @@ const CourseRegistrationGeneric = () => {
                 </div>
               );
             })}
+            <button className="register-button" onClick={handleRegister}>
+        Register
+      </button>
           </div>
+          
         </div>
 
         <div className="course-content-area">
@@ -359,6 +363,7 @@ const CourseRegistrationGeneric = () => {
                           courseStatus.includes("In Progress") ? (
                             <div className="course-message">
                               {prerequisiteStatusMessage}
+                              <p>If you want to re-take this course, contact Learning Facilitators</p>
                             </div>
                           ) : (
                             <div className="course-slots">
@@ -398,9 +403,7 @@ const CourseRegistrationGeneric = () => {
           )}
         </div>
       </div>
-      <button className="register-button" onClick={handleRegister}>
-        Register
-      </button>
+     
     </div>
   );
 };
