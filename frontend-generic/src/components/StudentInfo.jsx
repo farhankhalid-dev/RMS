@@ -1,4 +1,5 @@
 import React from 'react';
+import "./styles/StudentInfo.css"
 import studentData from "../data/studentInfo.json";
 
 const StudentInfo = () => {
