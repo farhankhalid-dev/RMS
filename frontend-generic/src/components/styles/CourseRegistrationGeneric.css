@@ -23,6 +23,7 @@ body {
 
 .course-registration {
   display: flex;
+  height: 100vh;
 }
 
 .sidebar-container {
