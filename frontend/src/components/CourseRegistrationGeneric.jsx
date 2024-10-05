@@ -294,7 +294,7 @@ const CourseRegistrationGeneric = () => {
               onClick={() => handleItemSelect('calendar')}
             >
               <div className="semester-header">
-                <span>Register Calendar</span>
+                <span>Course Timetable</span>
               </div>
             </div>
             <button className="register-button" onClick={handleRegister}>
@@ -306,7 +306,7 @@ const CourseRegistrationGeneric = () => {
         <div className="course-content-area">
           {selectedItem === 'calendar' ? (
             <div className="calendar-content">
-              <h2 className="semester-title sticky">Register Calendar</h2>
+              <h2 className="semester-title sticky">Course Timetable</h2>
               <Calendar selectedCourses={Object.values(selectedSlots)} />
             </div>
           ) : selectedItem !== null ? (

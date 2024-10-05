@@ -282,7 +282,7 @@
               }
             ],
             "facultyName": "FACULTY MEMBER",
-            "status": "locked"
+            "status": "available"
           },
           {
             "slotId": 5,
@@ -693,7 +693,7 @@
               }
             ],
             "facultyName": "FACULTY MEMBER",
-            "status": "available"
+            "status": "locked"
           },
           {
             "slotId": 8,
@@ -963,7 +963,7 @@
       {
         "Name": "SOCIOLOGY",
         "CourseCode": "HUM113",
-        "Status": "locked",
+        "Status": "available",
         "PreRequisites": [
           "None"
         ],
@@ -980,7 +980,7 @@
               }
             ],
             "facultyName": "FACULTY MEMBER",
-            "status": "locked"
+            "status": "available"
           },
           {
             "slotId": 2,
@@ -1006,7 +1006,7 @@
               }
             ],
             "facultyName": "FACULTY MEMBER",
-            "status": "available"
+            "status": "locked"
           },
           {
             "slotId": 4,
@@ -1285,7 +1285,7 @@
       {
         "Name": "DATABASE MANAGEMENT SYSTEMS (LAB)",
         "CourseCode": "CSC331-L",
-        "Status": "locked",
+        "Status": "available",
         "PreRequisites": [
           "CSC222",
           "CSC231"
@@ -1303,7 +1303,7 @@
               }
             ],
             "facultyName": "ATHAR ALI",
-            "status": "locked"
+            "status": "available"
           },
           {
             "slotId": 2,
@@ -1601,7 +1601,7 @@
               }
             ],
             "facultyName": "FACULTY MEMBER",
-            "status": "locked"
+            "status": "available"
           }
         ],
         "Grade": "N/A"
@@ -1614,7 +1614,7 @@
       {
         "Name": "ACADEMIC & PROFESSIONAL WRITING",
         "CourseCode": "HUM121",
-        "Status": "available",
+        "Status": "locked",
         "PreRequisites": [
           "HUM111"
         ],
@@ -1631,7 +1631,7 @@
               }
             ],
             "facultyName": "IMRANA ARIF",
-            "status": "available"
+            "status": "locked"
           },
           {
             "slotId": 2,
@@ -1696,7 +1696,7 @@
               }
             ],
             "facultyName": "SHEIKH MUHAMMAD ABDULLAH",
-            "status": "available"
+            "status": "locked"
           },
           {
             "slotId": 7,
@@ -1800,7 +1800,7 @@
               }
             ],
             "facultyName": "FACULTY MEMBER",
-            "status": "locked"
+            "status": "available"
           }
         ],
         "Grade": "N/A"
@@ -1934,7 +1934,7 @@
               }
             ],
             "facultyName": "DR. IMTIAZ HUSSAIN",
-            "status": "locked"
+            "status": "available"
           }
         ],
         "Grade": "N/A"
@@ -2260,7 +2260,7 @@
               }
             ],
             "facultyName": "FACULTY MEMBER",
-            "status": "locked"
+            "status": "available"
           }
         ],
         "Grade": "N/A"
@@ -2579,7 +2579,7 @@
       {
         "Name": "CRYPTOGRAPHY & DATA SECURITY (DE)",
         "CourseCode": "CE407",
-        "Status": "available",
+        "Status": "locked",
         "PreRequisites": [
           "None"
         ],
@@ -2596,7 +2596,7 @@
               }
             ],
             "facultyName": "FACULTY MEMBER",
-            "status": "available"
+            "status": "locked"
           }
         ],
         "Grade": "N/A"
@@ -2717,7 +2717,7 @@
                 "day": "THU",
                 "startTime": "11:30",
                 "endTime": "14:25",
-                "room": "E-702"
+                "room": "E-206"
               }
             ],
             "facultyName": "MUHAMMAD FAHIM AAMIR",
@@ -3269,7 +3269,7 @@
       {
         "Name": "ROUTING & SWITCHING (LAB) (DE)",
         "CourseCode": "CS421-L",
-        "Status": "locked",
+        "Status": "available",
         "PreRequisites": [
           "None"
         ],
@@ -3286,7 +3286,7 @@
               }
             ],
             "facultyName": "MOHSIN MUBEEN ABBASI",
-            "status": "locked"
+            "status": "available"
           }
         ],
         "Grade": "N/A"
@@ -3415,7 +3415,7 @@
               }
             ],
             "facultyName": "DR. ATIYA MASOOD",
-            "status": "locked"
+            "status": "available"
           }
         ],
         "Grade": "N/A"

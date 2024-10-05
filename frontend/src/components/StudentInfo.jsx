@@ -4,8 +4,8 @@ import studentData from "../data/studentInfo.json";
 
 const StudentInfo = () => {
   const infoItems = [
-    { label: "Name", value: "Redacted" },
-    { label: "Reg. Number", value: "Redacted" },
+    { label: "Name", value: studentData.name },
+    { label: "Reg. Number", value: studentData.regNumber },
     { label: "Program", value: studentData.program },
     { label: "Credit Hours Required", value: studentData.creditHoursRequired },
     { label: "Credit Hours Completed", value: studentData.creditHoursCompleted },

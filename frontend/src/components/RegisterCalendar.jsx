@@ -10,6 +10,7 @@ const DAY_MAP = {
 
 const RegisterCalendar = ({ selectedCourses }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [courseColors, setCourseColors] = useState({});
 
   useEffect(() => {
     const checkMobile = () => {
@@ -17,8 +18,17 @@ const RegisterCalendar = ({ selectedCourses }) => {
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
+
+    // Generate colors for courses
+    const colors = {};
+    selectedCourses.forEach((course, index) => {
+      const hue = (index * 137.5) % 360;
+      colors[course.code] = `hsl(${hue}, 70%, 65%)`;
+    });
+    setCourseColors(colors);
+
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  }, [selectedCourses]);
 
   const parseTime = (timeString) => {
     const [hours, minutes] = timeString.split(':').map(Number);
@@ -47,7 +57,7 @@ const RegisterCalendar = ({ selectedCourses }) => {
       const end = parseTime(timing.endTime);
       if (hour >= start && hour < end) {
         return {
-          backgroundColor: 'var(--accent-color)',
+          backgroundColor: courseColors[course.code],
           gridColumn: `${DAYS.indexOf(day) + 2}`,
           gridRowStart: `${Math.round((start - 8) * 2 + 2)}`,
           gridRowEnd: `${Math.round((end - 8) * 2 + 2)}`,
@@ -110,7 +120,11 @@ const RegisterCalendar = ({ selectedCourses }) => {
     const timing = course.slot.timings.find(t => DAY_MAP[t.day] === day);
 
     return (
-      <div key={course.code} className="course-label">
+      <div 
+        key={course.code} 
+        className="course-label"
+        style={{ backgroundColor: courseColors[course.code] }}
+      >
         <span className="course-name">{course.name}</span>
         <span className="course-time">
           {`${formatTime(timing.startTime)} - ${formatTime(timing.endTime)}`}
