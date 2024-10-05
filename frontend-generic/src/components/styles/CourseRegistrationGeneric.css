@@ -439,7 +439,7 @@ body {
   z-index: 1001;
   cursor: pointer;
   padding: 10px;
-  background-color: var(--nav-bg);
+  background-color: var(--accent-color);
   border-radius: 5px;
 }
 
@@ -576,7 +576,7 @@ body {
   .register-button {
     width: 100%;
     max-width: 300px;
-    margin: 1rem auto;
+    margin: 2.8rem auto;
   }
 }
 

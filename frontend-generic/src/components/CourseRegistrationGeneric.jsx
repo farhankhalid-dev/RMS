@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback } from "react";
 import coursesData from "../data/courses.json";
 import StudentInfo from "./StudentInfo.jsx";
+import Calendar from "./RegisterCalendar.jsx";
 import "./styles/CourseRegistrationGeneric.css";
 
 const generateUniqueId = (course, slot) =>
@@ -119,7 +120,7 @@ const CourseCard = React.memo(
 const CourseRegistrationGeneric = () => {
   const [selectedSlots, setSelectedSlots] = useState({});
   const [openCourses, setOpenCourses] = useState({});
-  const [selectedSemester, setSelectedSemester] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const courseMap = useMemo(() => {
@@ -145,11 +146,16 @@ const CourseRegistrationGeneric = () => {
       if (newSelected[courseCode]?.id === id) {
         delete newSelected[courseCode];
       } else {
-        newSelected[courseCode] = { id, slot: selectedSlot };
+        newSelected[courseCode] = { 
+          id, 
+          slot: selectedSlot,
+          name: courseMap.get(courseCode).name,
+          code: courseCode
+        };
       }
       return newSelected;
     });
-  }, []);
+  }, [courseMap]);
 
   const getClashingCourses = useCallback(
     (courseCode, slot) => {
@@ -227,10 +233,8 @@ const CourseRegistrationGeneric = () => {
     // Handle registration logic here
   }, [selectedSlots]);
 
-  const toggleSemester = useCallback((semesterIndex) => {
-    setSelectedSemester((prevSemester) =>
-      prevSemester === semesterIndex ? null : semesterIndex
-    );
+  const handleItemSelect = useCallback((item) => {
+    setSelectedItem((prevItem) => (prevItem === item ? null : item));
     setIsSidebarOpen(false);
   }, []);
 
@@ -271,9 +275,9 @@ const CourseRegistrationGeneric = () => {
                 <div
                   key={`semester-${semesterIndex}-${semester.semester}`}
                   className={`semester-accordion ${
-                    selectedSemester === semesterIndex ? "selected" : ""
+                    selectedItem === semesterIndex ? "selected" : ""
                   }`}
-                  onClick={() => toggleSemester(semesterIndex)}
+                  onClick={() => handleItemSelect(semesterIndex)}
                 >
                   <div className="semester-header">
                     <span>
@@ -283,20 +287,34 @@ const CourseRegistrationGeneric = () => {
                 </div>
               );
             })}
+            <div
+              className={`semester-accordion ${
+                selectedItem === 'calendar' ? "selected" : ""
+              }`}
+              onClick={() => handleItemSelect('calendar')}
+            >
+              <div className="semester-header">
+                <span>Register Calendar</span>
+              </div>
+            </div>
             <button className="register-button" onClick={handleRegister}>
-        Register
-      </button>
+              Register
+            </button>
           </div>
-          
         </div>
 
         <div className="course-content-area">
-          {selectedSemester !== null ? (
+          {selectedItem === 'calendar' ? (
+            <div className="calendar-content">
+              <h2 className="semester-title sticky">Register Calendar</h2>
+              <Calendar selectedCourses={Object.values(selectedSlots)} />
+            </div>
+          ) : selectedItem !== null ? (
             <div className="semester-content">
               <h2 className="semester-title sticky">
-                {coursesData[selectedSemester].semester}
+                {coursesData[selectedItem].semester}
               </h2>
-              {coursesData[selectedSemester].courses.map(
+              {coursesData[selectedItem].courses.map(
                 (course, courseIndex) => {
                   const { allCleared, anyInProgress } =
                     checkPrerequisitesStatus(course.PreRequisites);
@@ -363,7 +381,10 @@ const CourseRegistrationGeneric = () => {
                           courseStatus.includes("In Progress") ? (
                             <div className="course-message">
                               {prerequisiteStatusMessage}
-                              <p>If you want to re-take this course, contact Learning Facilitators</p>
+                              <p>
+                                If you want to re-take this course, contact
+                                Learning Facilitators
+                              </p>
                             </div>
                           ) : (
                             <div className="course-slots">
@@ -403,7 +424,6 @@ const CourseRegistrationGeneric = () => {
           )}
         </div>
       </div>
-     
     </div>
   );
 };
