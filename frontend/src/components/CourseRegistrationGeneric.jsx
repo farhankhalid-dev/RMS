@@ -1,29 +1,11 @@
 import React, { useState, useMemo, useCallback } from "react";
-import coursesData from "../data/courses.json";
-import StudentInfo from "./StudentInfo.jsx";
-import Calendar from "./RegisterCalendar.jsx";
+import courseData from "../data/data.json";
 import "./styles/CourseRegistrationGeneric.css";
-
-const generateUniqueId = (course, slot) =>
-  `${course.CourseCode}-${slot.slotId}`;
-
-const convertToTimestamp = (day, time) => {
-  const daysOfWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const [hours, minutes] = time.split(":").map(Number);
-  const date = new Date(2023, 0, 1 + daysOfWeek.indexOf(day));
-  date.setHours(hours, minutes, 0, 0);
-  return date.getTime();
-};
+import StudentInfo from "./StudentInfo";
+import Calendar from "./RegisterCalendar";
 
 const checkTimeClash = (slot1, slot2) => {
+  if (!slot1.timings || !slot2.timings) return false;
   return slot1.timings.some((timing1) =>
     slot2.timings.some(
       (timing2) =>
@@ -36,86 +18,77 @@ const checkTimeClash = (slot1, slot2) => {
   );
 };
 
-const CourseCard = React.memo(
-  ({ course, slot, isSelected, onSelect, id, clashingCourses }) => {
-    const [isLoading, setIsLoading] = useState(false);
-    const displayFacultyName =
-      slot.facultyName === "FACULTY MEMBER" ? "N/A" : slot.facultyName;
-    const status = slot.status || "Unknown";
+const convertToTimestamp = (day, time) => {
+  const daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const [hours, minutes] = time.split(":").map(Number);
+  const date = new Date(2023, 0, 1 + daysOfWeek.indexOf(day));
+  date.setHours(hours, minutes, 0, 0);
+  return date.getTime();
+};
 
-    const handleClick = useCallback(() => {
-      if (
-        status === "available" &&
-        !isLoading &&
-        clashingCourses.length === 0
-      ) {
-        setIsLoading(true);
-        setTimeout(() => {
-          onSelect(course.CourseCode, id, slot);
-          setIsLoading(false);
-        }, 300);
-      }
-    }, [
-      course.CourseCode,
-      id,
-      onSelect,
-      status,
-      slot,
-      isLoading,
-      clashingCourses,
-    ]);
+const CourseCard = React.memo(({ course, slot, isSelected, onSelect, id, clashingCourses }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const displayFacultyName = slot.facultyName === "FACULTY MEMBER" ? "N/A" : slot.facultyName;
+  const status = slot.status || "Unknown";
 
-    const isSelectable = status === "available" && clashingCourses.length === 0;
+  const handleClick = useCallback(() => {
+    if (status === "available" && !isLoading && clashingCourses.length === 0) {
+      setIsLoading(true);
+      setTimeout(() => {
+        onSelect(course.CourseCode, id, slot);
+        setIsLoading(false);
+      }, 300);
+    }
+  }, [course.CourseCode, id, onSelect, status, slot, isLoading, clashingCourses]);
 
-    const cardClass = `course-card ${
-      isSelected ? "selected" : ""
-    } ${status.toLowerCase()} ${clashingCourses.length > 0 ? "clashing" : ""} ${
-      isLoading ? "loading" : ""
-    } ${!isSelectable ? "unselectable" : ""}`;
+  const isSelectable = status === "available" && clashingCourses.length === 0;
 
-    return (
-      <div className={cardClass} onClick={handleClick}>
-        <div className="card-content">
-          <div className="faculty-info">Faculty: {displayFacultyName}</div>
-          <div className="timings-container">
-            {Array.isArray(slot.timings) && slot.timings.length > 0 ? (
-              slot.timings.map((timing, index) => (
-                <div className="slot-timings" key={`${id}-timing-${index}`}>
-                  <span className="slot-day">{timing.day.slice(0, 3)}</span>
-                  <span className="slot-time">
-                    {timing.startTime} - {timing.endTime}
-                  </span>
-                  <span className="slot-room">
-                    Room: {timing.room || "TBA"}
-                  </span>
-                </div>
-              ))
-            ) : (
-              <div className="slot-timings">No Timings Available</div>
-            )}
-          </div>
-          <div className="status-container">
-            <span className={`slot-status ${status.toLowerCase()}`}>
-              {status}
-            </span>
-            <input
-              type="radio"
-              checked={isSelected}
-              onChange={handleClick}
-              disabled={!isSelectable || isLoading}
-            />
-          </div>
+  return (
+    <div className={`course-card ${isSelected ? "selected" : ""} ${status.toLowerCase()} 
+      ${clashingCourses.length > 0 ? "clashing" : ""} 
+      ${isLoading ? "loading" : ""} 
+      ${!isSelectable ? "unselectable" : ""}`}
+      onClick={handleClick}>
+      <div className="card-content">
+        <div className="faculty-info">Faculty: {displayFacultyName}</div>
+        <div className="timings-container">
+          {Array.isArray(slot.timings) && slot.timings.length > 0 ? (
+            slot.timings.map((timing, index) => (
+              <div className="slot-timings" key={`${id}-timing-${index}`}>
+                <span className="slot-day">{timing.day}</span>
+                <span className="slot-time">
+                  {timing.startTime} - {timing.endTime}
+                </span>
+                <span className="slot-room">
+                  Room: {timing.room || "TBA"}
+                </span>
+              </div>
+            ))
+          ) : (
+            <div className="slot-timings">No Timings Available</div>
+          )}
         </div>
-        {clashingCourses.length > 0 && (
-          <div className="clashing-courses">
-            Clashes with: {clashingCourses.join(", ")}
-          </div>
-        )}
-        <div className="spinner"></div>
+        <div className="status-container">
+          <span className={`slot-status ${status.toLowerCase()}`}>
+            {status}
+          </span>
+          <input
+            type="radio"
+            checked={isSelected}
+            onChange={handleClick}
+            disabled={!isSelectable || isLoading}
+          />
+        </div>
       </div>
-    );
-  }
-);
+      {clashingCourses.length > 0 && (
+        <div className="clashing-courses">
+          Clashes with: {clashingCourses.join(", ")}
+        </div>
+      )}
+      {isLoading && <div className="spinner" />}
+    </div>
+  );
+});
 
 const CourseRegistrationGeneric = () => {
   const [selectedSlots, setSelectedSlots] = useState({});
@@ -123,9 +96,38 @@ const CourseRegistrationGeneric = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  React.useEffect(() => {
+    const preselectedCourseIds = courseData.selectedCourseIds || [];
+    const newSelectedSlots = {};
+
+    courseData.semesters.forEach(semester => {
+      semester.courses.forEach(course => {
+        const matchingSlot = course.SLOTS?.find(
+          slot => slot.inputId && preselectedCourseIds.includes(slot.inputId) && slot.status === "available"
+        );
+
+        if (matchingSlot) {
+          newSelectedSlots[course.CourseCode] = {
+            id: matchingSlot.inputId,
+            slot: matchingSlot,
+            name: course.Name,
+            code: course.CourseCode
+          };
+          
+          setOpenCourses(prev => ({
+            ...prev,
+            [course.CourseCode]: true
+          }));
+        }
+      });
+    });
+
+    setSelectedSlots(newSelectedSlots);
+  }, []);
+
   const courseMap = useMemo(() => {
     const map = new Map();
-    coursesData.forEach((semester) => {
+    courseData.semesters.forEach((semester) => {
       semester.courses.forEach((course) => {
         if (course.CourseCode) {
           map.set(course.CourseCode, {
@@ -146,28 +148,24 @@ const CourseRegistrationGeneric = () => {
       if (newSelected[courseCode]?.id === id) {
         delete newSelected[courseCode];
       } else {
-        newSelected[courseCode] = { 
-          id, 
+        newSelected[courseCode] = {
+          id,
           slot: selectedSlot,
           name: courseMap.get(courseCode).name,
-          code: courseCode
+          code: courseCode,
         };
       }
       return newSelected;
     });
   }, [courseMap]);
 
-  const getClashingCourses = useCallback(
-    (courseCode, slot) => {
-      return Object.entries(selectedSlots)
-        .filter(
-          ([otherCourseCode, { slot: otherSlot }]) =>
-            otherCourseCode !== courseCode && checkTimeClash(slot, otherSlot)
-        )
-        .map(([clashingCourseCode]) => courseMap.get(clashingCourseCode).name);
-    },
-    [selectedSlots, courseMap]
-  );
+  const getClashingCourses = useCallback((courseCode, slot) => {
+    return Object.entries(selectedSlots)
+      .filter(([otherCourseCode, { slot: otherSlot }]) =>
+        otherCourseCode !== courseCode && checkTimeClash(slot, otherSlot)
+      )
+      .map(([clashingCourseCode]) => courseMap.get(clashingCourseCode).name);
+  }, [selectedSlots, courseMap]);
 
   const renderPrerequisites = useCallback(
     (preRequisites = []) => {
@@ -180,12 +178,11 @@ const CourseRegistrationGeneric = () => {
         const courseName = courseDetails ? courseDetails.name : prerequisite;
         const status = courseDetails ? courseDetails.status : "Unknown";
 
-        let className = "prereq-item unknown";
-        if (status.includes("cleared")) {
-          className = "prereq-item cleared";
-        } else if (status.includes("In Progress")) {
-          className = "prereq-item in-progress";
-        }
+        const className = status.includes("cleared")
+          ? "prereq-item cleared"
+          : status.includes("In Progress")
+          ? "prereq-item in-progress"
+          : "prereq-item unknown";
 
         return (
           <span key={`prereq-${index}`} className={className}>
@@ -223,15 +220,8 @@ const CourseRegistrationGeneric = () => {
   );
 
   const checkCourseAvailability = useCallback((course) => {
-    return (
-      course.SLOTS && course.SLOTS.some((slot) => slot.status === "available")
-    );
+    return course.SLOTS && course.SLOTS.some((slot) => slot.status === "available");
   }, []);
-
-  const handleRegister = useCallback(() => {
-    console.log("Registered Courses: ", selectedSlots);
-    // Handle registration logic here
-  }, [selectedSlots]);
 
   const handleItemSelect = useCallback((item) => {
     setSelectedItem((prevItem) => (prevItem === item ? null : item));
@@ -245,10 +235,6 @@ const CourseRegistrationGeneric = () => {
     }));
   }, []);
 
-  const toggleSidebar = useCallback(() => {
-    setIsSidebarOpen((prev) => !prev);
-  }, []);
-
   return (
     <div className="main">
       <input
@@ -256,7 +242,7 @@ const CourseRegistrationGeneric = () => {
         id="sidebar-toggle"
         className="sidebar-toggle"
         checked={isSidebarOpen}
-        onChange={toggleSidebar}
+        onChange={() => setIsSidebarOpen(!isSidebarOpen)}
       />
       <label htmlFor="sidebar-toggle" className="sidebar-toggle-label">
         <span className="menu-icon"></span>
@@ -265,7 +251,7 @@ const CourseRegistrationGeneric = () => {
       <div className="course-registration">
         <div className="sidebar-container">
           <div className="semester-list">
-            {coursesData.map((semester, semesterIndex) => {
+            {courseData.semesters.map((semester, semesterIndex) => {
               const totalCourses = semester.courses.length;
               const completedCourses = semester.courses.filter((course) =>
                 (course.Status || "").includes("cleared")
@@ -274,152 +260,120 @@ const CourseRegistrationGeneric = () => {
               return (
                 <div
                   key={`semester-${semesterIndex}-${semester.semester}`}
-                  className={`semester-accordion ${
-                    selectedItem === semesterIndex ? "selected" : ""
-                  }`}
+                  className={`semester-accordion ${selectedItem === semesterIndex ? "selected" : ""}`}
                   onClick={() => handleItemSelect(semesterIndex)}
                 >
                   <div className="semester-header">
-                    <span>
-                      {semester.semester} - ({completedCourses}/{totalCourses})
-                    </span>
+                    {semester.semester} - ({completedCourses}/{totalCourses})
                   </div>
                 </div>
               );
             })}
             <div
-              className={`semester-accordion ${
-                selectedItem === 'calendar' ? "selected" : ""
-              }`}
-              onClick={() => handleItemSelect('calendar')}
+              className={`semester-accordion ${selectedItem === "calendar" ? "selected" : ""}`}
+              onClick={() => handleItemSelect("calendar")}
             >
-              <div className="semester-header">
-                <span>Course Timetable</span>
-              </div>
+              <div className="semester-header">Course Timetable</div>
             </div>
-            <button className="register-button" onClick={handleRegister}>
-              Register
-            </button>
           </div>
         </div>
 
         <div className="course-content-area">
-          {selectedItem === 'calendar' ? (
+          {selectedItem === "calendar" ? (
             <div className="calendar-content">
-              <h2 className="semester-title sticky">Course Timetable</h2>
+              <h2>Course Timetable</h2>
               <Calendar selectedCourses={Object.values(selectedSlots)} />
             </div>
           ) : selectedItem !== null ? (
             <div className="semester-content">
-              <h2 className="semester-title sticky">
-                {coursesData[selectedItem].semester}
-              </h2>
-              {coursesData[selectedItem].courses.map(
-                (course, courseIndex) => {
-                  const { allCleared, anyInProgress } =
-                    checkPrerequisitesStatus(course.PreRequisites);
-                  let prerequisiteStatusMessage = "";
-                  let statusClassName = "";
+              <h2 className="semester-title">{courseData.semesters[selectedItem].semester}</h2>
+              {courseData.semesters[selectedItem].courses.map((course, courseIndex) => {
+                const { allCleared, anyInProgress } = checkPrerequisitesStatus(course.PreRequisites);
+                const courseStatus = course.Status || "unknown";
+                const isAvailable = checkCourseAvailability(course);
 
-                  const courseStatus = course.Status || "unknown";
-                  const isAvailable = checkCourseAvailability(course);
+                let statusMessage, statusClassName;
+                if (courseStatus.includes("cleared")) {
+                  statusMessage = `Cleared: ${course.Grade || "N/A"}`;
+                  statusClassName = "status-cleared";
+                } else if (courseStatus.includes("In Progress")) {
+                  statusMessage = "Currently In Progress";
+                  statusClassName = "status-in-progress";
+                } else if (!allCleared) {
+                  statusMessage = "Prerequisites not cleared";
+                  statusClassName = "status-not-cleared";
+                } else if (anyInProgress) {
+                  statusMessage = "Prerequisites in progress";
+                  statusClassName = "status-in-progress";
+                } else if (!isAvailable) {
+                  statusMessage = "No slots available";
+                  statusClassName = "status-not-available";
+                } else {
+                  statusMessage = "Available";
+                  statusClassName = "status-available";
+                }
 
-                  if (courseStatus.includes("cleared")) {
-                    prerequisiteStatusMessage = `Cleared: ${
-                      course.Grade || "N/A"
-                    }`;
-                    statusClassName = "status-cleared";
-                  } else if (courseStatus.includes("In Progress")) {
-                    prerequisiteStatusMessage = "Currently In Progress";
-                    statusClassName = "status-in-progress";
-                  } else if (!allCleared) {
-                    prerequisiteStatusMessage = "Prerequisites not cleared";
-                    statusClassName = "status-not-cleared";
-                  } else if (anyInProgress) {
-                    prerequisiteStatusMessage = "Prerequisites in progress";
-                    statusClassName = "status-in-progress";
-                  } else if (!isAvailable) {
-                    prerequisiteStatusMessage = "No slots available";
-                    statusClassName = "status-not-available";
-                  } else {
-                    prerequisiteStatusMessage = "Available";
-                    statusClassName = "status-available";
-                  }
-
-                  return (
+                return (
+                  <div
+                    key={`course-${courseIndex}-${course.CourseCode}`}
+                    className="course-accordion"
+                  >
                     <div
-                      key={`course-${courseIndex}-${course.CourseCode}`}
-                      className="course-accordion"
+                      className={`course-header ${openCourses[course.CourseCode] ? "open" : ""}`}
+                      onClick={() => toggleCourse(course.CourseCode)}
                     >
-                      <div
-                        className={`course-header sticky ${
-                          openCourses[course.CourseCode] ? "open" : ""
-                        }`}
-                        onClick={() => toggleCourse(course.CourseCode)}
-                      >
-                        <div className="course-title">
-                          {course.CourseCode} - {course.Name}
+                      <div className="course-title">
+                        {course.CourseCode} - {course.Name}
+                      </div>
+                      <div className="course-info">
+                        <div className="prereq">
+                          Prerequisites: {renderPrerequisites(course.PreRequisites)}
                         </div>
-                        <div className="course-info">
-                          <div className="prereq">
-                            Prerequisites:{" "}
-                            {renderPrerequisites(course.PreRequisites)}
-                          </div>
-                          <div className="course-meta">
-                            <span className="credits-badge">
-                              Credits: {course.Credits}
-                            </span>
-                            <span className={`status-badge ${statusClassName}`}>
-                              {prerequisiteStatusMessage}
-                            </span>
-                          </div>
+                        <div className="course-meta">
+                          <span className="credits-badge">
+                            Credits: {course.Credits}
+                          </span>
+                          <span className={`status-badge ${statusClassName}`}>
+                            {statusMessage}
+                          </span>
                         </div>
                       </div>
-                      {openCourses[course.CourseCode] && (
-                        <div className="course-content">
-                          {courseStatus.includes("cleared") ||
-                          courseStatus.includes("In Progress") ? (
-                            <div className="course-message">
-                              {prerequisiteStatusMessage}
-                              <p>
-                                If you want to re-take this course, contact
-                                Learning Facilitators
-                              </p>
-                            </div>
-                          ) : (
-                            <div className="course-slots">
-                              {(course.SLOTS || []).map((slot, slotIndex) => {
-                                const id = generateUniqueId(course, slot);
-                                return (
-                                  <CourseCard
-                                    key={`slot-${slotIndex}-${id}`}
-                                    id={id}
-                                    course={course}
-                                    slot={slot}
-                                    isSelected={
-                                      selectedSlots[course.CourseCode]?.id ===
-                                      id
-                                    }
-                                    onSelect={handleSelect}
-                                    clashingCourses={getClashingCourses(
-                                      course.CourseCode,
-                                      slot
-                                    )}
-                                  />
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
-                      )}
                     </div>
-                  );
-                }
-              )}
+                    {openCourses[course.CourseCode] && (
+                      <div className="course-content">
+                        {courseStatus.includes("cleared") ||
+                        courseStatus.includes("In Progress") ? (
+                          <div className="course-message">
+                            {statusMessage}
+                            <p>
+                              If you want to re-take this course, contact
+                              Learning Facilitators
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="course-slots">
+                            {(course.SLOTS || []).map((slot, slotIndex) => (
+                              <CourseCard
+                                key={`slot-${slotIndex}-${slot.inputId}`}
+                                id={slot.inputId}
+                                course={course}
+                                slot={slot}
+                                isSelected={selectedSlots[course.CourseCode]?.id === slot.inputId}
+                                onSelect={handleSelect}
+                                clashingCourses={getClashingCourses(course.CourseCode, slot)}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <div className="placeholder">
-              <StudentInfo />
+              <StudentInfo studentInfo={courseData.studentInfo} />
             </div>
           )}
         </div>

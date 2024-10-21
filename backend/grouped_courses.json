@@ -226,7 +226,7 @@
       {
         "Name": "PERSONAL DEVELOPMENT",
         "CourseCode": "HUM112",
-        "Status": "available",
+        "Status": "locked",
         "PreRequisites": [
           "None"
         ],
@@ -243,7 +243,7 @@
               }
             ],
             "facultyName": "DR. ABIDA SHAHEEN",
-            "status": "available"
+            "status": "locked"
           },
           {
             "slotId": 2,
@@ -255,7 +255,7 @@
                 "room": "E-902"
               }
             ],
-            "facultyName": "FARAH SALEEM",
+            "facultyName": "RUBY USMAN",
             "status": "locked"
           },
           {
@@ -281,7 +281,7 @@
                 "room": "E-204"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "ASAD MUJTABA NAQVI",
             "status": "locked"
           },
           {
@@ -295,6 +295,19 @@
               }
             ],
             "facultyName": "TALIB HUSSAIN FAROOQI",
+            "status": "locked"
+          },
+          {
+            "slotId": 6,
+            "timings": [
+              {
+                "day": "MON",
+                "startTime": "08:30",
+                "endTime": "11:30",
+                "room": "E-901"
+              }
+            ],
+            "facultyName": "SADIA HUMAYUN",
             "status": "locked"
           }
         ],
@@ -454,7 +467,7 @@
               }
             ],
             "facultyName": "MUHAMMAD WALI KHAN",
-            "status": "locked"
+            "status": "available"
           },
           {
             "slotId": 3,
@@ -488,22 +501,22 @@
                 "day": "MON",
                 "startTime": "13:30",
                 "endTime": "14:25",
-                "room": "E-504"
+                "room": "E-803"
               },
               {
                 "day": "TUE",
                 "startTime": "13:30",
                 "endTime": "14:25",
-                "room": "E-504"
+                "room": "E-803"
               },
               {
                 "day": "WED",
                 "startTime": "13:30",
                 "endTime": "14:25",
-                "room": "E-604"
+                "room": "E-803"
               }
             ],
-            "facultyName": "AMNA AZIZ",
+            "facultyName": "AFSHAN HIBA",
             "status": "available"
           },
           {
@@ -553,7 +566,7 @@
                 "room": "E-507"
               }
             ],
-            "facultyName": "AMNA AZIZ",
+            "facultyName": "AFSHAN HIBA",
             "status": "locked"
           }
         ],
@@ -598,7 +611,7 @@
       {
         "Name": "PHILOSOPHY AND CRITICAL THINKING",
         "CourseCode": "HUM233",
-        "Status": "locked",
+        "Status": "available",
         "PreRequisites": [
           "None"
         ],
@@ -615,7 +628,7 @@
               }
             ],
             "facultyName": "MUHAMMAD RIZWAN AKRAM",
-            "status": "locked"
+            "status": "available"
           },
           {
             "slotId": 2,
@@ -653,7 +666,7 @@
                 "room": "E-11-04"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "MUHAMMAD SAIFULLAH KHAN",
             "status": "locked"
           },
           {
@@ -666,8 +679,8 @@
                 "room": "E-10-03"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
-            "status": "locked"
+            "facultyName": "MUHAMMAD SAIFULLAH KHAN",
+            "status": "available"
           },
           {
             "slotId": 6,
@@ -692,7 +705,7 @@
                 "room": "E-10-03"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "SYED JAUHAR MEHDI NAQVI",
             "status": "locked"
           },
           {
@@ -706,7 +719,7 @@
               }
             ],
             "facultyName": "SHAHZAMAN MURTAZA",
-            "status": "locked"
+            "status": "available"
           },
           {
             "slotId": 9,
@@ -715,10 +728,10 @@
                 "day": "SAT",
                 "startTime": "08:30",
                 "endTime": "11:30",
-                "room": "E-804"
+                "room": "E-805"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "MUHAMMAD RIZWAN AKRAM",
             "status": "locked"
           },
           {
@@ -728,10 +741,10 @@
                 "day": "SAT",
                 "startTime": "11:45",
                 "endTime": "14:45",
-                "room": "E-804"
+                "room": "E-805"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "SHAHZAMAN MURTAZA",
             "status": "locked"
           },
           {
@@ -744,8 +757,8 @@
                 "room": "E-804"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
-            "status": "available"
+            "facultyName": "MUHAMMAD SAIFULLAH KHAN",
+            "status": "locked"
           },
           {
             "slotId": 12,
@@ -754,10 +767,10 @@
                 "day": "SAT",
                 "startTime": "11:45",
                 "endTime": "14:45",
-                "room": ""
+                "room": "E-806"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "DANIYAL RIAZ",
             "status": "locked"
           },
           {
@@ -767,10 +780,10 @@
                 "day": "SAT",
                 "startTime": "08:30",
                 "endTime": "11:30",
-                "room": ""
+                "room": "E-806"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "SYED IMRAN RAZA",
             "status": "available"
           }
         ],
@@ -887,31 +900,6 @@
             "timings": [
               {
                 "day": "MON",
-                "startTime": "11:30",
-                "endTime": "12:25",
-                "room": "E-704"
-              },
-              {
-                "day": "TUE",
-                "startTime": "11:30",
-                "endTime": "12:25",
-                "room": "E-704"
-              },
-              {
-                "day": "WED",
-                "startTime": "11:30",
-                "endTime": "12:25",
-                "room": "E-704"
-              }
-            ],
-            "facultyName": "ALI MUHAMMAD",
-            "status": "locked"
-          },
-          {
-            "slotId": 2,
-            "timings": [
-              {
-                "day": "MON",
                 "startTime": "10:30",
                 "endTime": "11:25",
                 "room": "E-605"
@@ -933,7 +921,7 @@
             "status": "locked"
           },
           {
-            "slotId": 3,
+            "slotId": 2,
             "timings": [
               {
                 "day": "MON",
@@ -954,8 +942,8 @@
                 "room": "E-609"
               }
             ],
-            "facultyName": "NOMAN BIN ZAHID",
-            "status": "locked"
+            "facultyName": "IKRAM-E-KHUDA",
+            "status": "available"
           }
         ],
         "Grade": "N/A"
@@ -963,7 +951,7 @@
       {
         "Name": "SOCIOLOGY",
         "CourseCode": "HUM113",
-        "Status": "available",
+        "Status": "locked",
         "PreRequisites": [
           "None"
         ],
@@ -979,8 +967,8 @@
                 "room": "E-11-04"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
-            "status": "available"
+            "facultyName": "SYEDA MEHDIYA ALI ZAIDI",
+            "status": "locked"
           },
           {
             "slotId": 2,
@@ -1005,7 +993,7 @@
                 "room": "E-904"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "SABAHAT RAZA",
             "status": "locked"
           },
           {
@@ -1019,7 +1007,7 @@
               }
             ],
             "facultyName": "SHAHZAMAN MURTAZA",
-            "status": "available"
+            "status": "locked"
           },
           {
             "slotId": 5,
@@ -1031,7 +1019,7 @@
                 "room": "E-201"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "SYEDA MEHDIYA ALI ZAIDI",
             "status": "locked"
           },
           {
@@ -1041,11 +1029,11 @@
                 "day": "SAT",
                 "startTime": "08:30",
                 "endTime": "11:30",
-                "room": "E-805"
+                "room": "E-704"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
-            "status": "locked"
+            "facultyName": "UBAIDA",
+            "status": "available"
           },
           {
             "slotId": 7,
@@ -1054,10 +1042,10 @@
                 "day": "SAT",
                 "startTime": "11:45",
                 "endTime": "14:45",
-                "room": "E-805"
+                "room": "E-807"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "SABAHAT RAZA",
             "status": "locked"
           },
           {
@@ -1070,7 +1058,7 @@
                 "room": "E-805"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "SYEDA MEHDIYA ALI ZAIDI",
             "status": "locked"
           },
           {
@@ -1080,10 +1068,10 @@
                 "day": "SAT",
                 "startTime": "08:30",
                 "endTime": "11:30",
-                "room": ""
+                "room": "E-807"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "SABAHAT RAZA",
             "status": "available"
           },
           {
@@ -1093,10 +1081,10 @@
                 "day": "SAT",
                 "startTime": "11:45",
                 "endTime": "14:45",
-                "room": ""
+                "room": "E0-304"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "UBAIDA",
             "status": "locked"
           },
           {
@@ -1106,11 +1094,11 @@
                 "day": "SAT",
                 "startTime": "15:00",
                 "endTime": "18:00",
-                "room": ""
+                "room": "E-806"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
-            "status": "available"
+            "facultyName": "SYEDA SABA HASHMI",
+            "status": "locked"
           }
         ],
         "Grade": "N/A"
@@ -1299,7 +1287,7 @@
                 "day": "WED",
                 "startTime": "11:30",
                 "endTime": "14:25",
-                "room": "E-206"
+                "room": "E-808"
               }
             ],
             "facultyName": "ATHAR ALI",
@@ -1328,7 +1316,7 @@
                 "room": "E-207"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "EJAZ AHMED",
             "status": "available"
           },
           {
@@ -1354,7 +1342,7 @@
                 "room": "E-708"
               }
             ],
-            "facultyName": "ASNA ANSARI",
+            "facultyName": "FAIZA LATIF ABBASI",
             "status": "available"
           }
         ],
@@ -1440,8 +1428,8 @@
                 "room": "E-510"
               }
             ],
-            "facultyName": "FAISAL AHMED",
-            "status": "locked"
+            "facultyName": "MUHAMMAD HASSAM SHAKIL SIDDIQUI",
+            "status": "available"
           },
           {
             "slotId": 3,
@@ -1459,7 +1447,7 @@
                 "room": "E-511"
               }
             ],
-            "facultyName": "MUHAMMAD HASSAM SHAKIL SIDDIQUI",
+            "facultyName": "FAISAL AHMED",
             "status": "available"
           },
           {
@@ -1478,7 +1466,7 @@
                 "room": "E-604"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "AHMED MUJTABA",
             "status": "available"
           },
           {
@@ -1522,7 +1510,7 @@
                 "room": "E-11-03"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "MUHAMMAD RAZA",
             "status": "locked"
           },
           {
@@ -1558,10 +1546,10 @@
                 "day": "TUE",
                 "startTime": "15:00",
                 "endTime": "18:00",
-                "room": "E-205"
+                "room": "E-11-08"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "ANITA YOUNUS",
             "status": "locked"
           },
           {
@@ -1584,10 +1572,10 @@
                 "day": "SAT",
                 "startTime": "15:00",
                 "endTime": "18:00",
-                "room": ""
+                "room": "E-501"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "MUNIZA ASAD",
             "status": "locked"
           },
           {
@@ -1597,11 +1585,11 @@
                 "day": "SAT",
                 "startTime": "11:30",
                 "endTime": "14:45",
-                "room": ""
+                "room": "E-301"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
-            "status": "available"
+            "facultyName": "MUNIZA ASAD",
+            "status": "locked"
           }
         ],
         "Grade": "N/A"
@@ -1614,7 +1602,7 @@
       {
         "Name": "ACADEMIC & PROFESSIONAL WRITING",
         "CourseCode": "HUM121",
-        "Status": "locked",
+        "Status": "available",
         "PreRequisites": [
           "HUM111"
         ],
@@ -1631,7 +1619,7 @@
               }
             ],
             "facultyName": "IMRANA ARIF",
-            "status": "locked"
+            "status": "available"
           },
           {
             "slotId": 2,
@@ -1656,7 +1644,7 @@
                 "room": "E-906"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "MUHAMMAD RAZA",
             "status": "locked"
           },
           {
@@ -1708,8 +1696,8 @@
                 "room": "E-11-04"
               }
             ],
-            "facultyName": "AALUMGIR SHAH",
-            "status": "locked"
+            "facultyName": "IMRANA ARIF",
+            "status": "available"
           },
           {
             "slotId": 8,
@@ -1774,7 +1762,7 @@
               }
             ],
             "facultyName": "MUHAMMAD TALHA SALEEM",
-            "status": "available"
+            "status": "locked"
           },
           {
             "slotId": 13,
@@ -1786,21 +1774,34 @@
                 "room": "E-10-01"
               }
             ],
-            "facultyName": "MUHAMMAD ANWAR CHOHAN",
+            "facultyName": "MUHAMMAD RAZA",
             "status": "available"
           },
           {
             "slotId": 14,
             "timings": [
               {
+                "day": "SUN",
+                "startTime": "08:30",
+                "endTime": "11:30",
+                "room": "E-905"
+              }
+            ],
+            "facultyName": "MOHAMMAD AFZAL",
+            "status": "available"
+          },
+          {
+            "slotId": 15,
+            "timings": [
+              {
                 "day": "SAT",
                 "startTime": "08:30",
                 "endTime": "11:30",
-                "room": ""
+                "room": "E-508"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
-            "status": "available"
+            "facultyName": "NISAR AHMED",
+            "status": "locked"
           }
         ],
         "Grade": "N/A"
@@ -1917,7 +1918,7 @@
                 "day": "THU",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": ""
+                "room": "E-805"
               }
             ],
             "facultyName": "FAHAD NAJEEB",
@@ -1933,7 +1934,7 @@
                 "room": "E-804"
               }
             ],
-            "facultyName": "DR. IMTIAZ HUSSAIN",
+            "facultyName": "DR. MOONA KANWAL",
             "status": "available"
           }
         ],
@@ -1968,11 +1969,11 @@
                 "day": "WED",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": "E-702"
+                "room": "E-509"
               }
             ],
             "facultyName": "HAFIZA MALIHA IQBAL",
-            "status": "locked"
+            "status": "available"
           },
           {
             "slotId": 3,
@@ -1981,7 +1982,7 @@
                 "day": "FRI",
                 "startTime": "08:30",
                 "endTime": "11:25",
-                "room": "E-708"
+                "room": "E-208"
               }
             ],
             "facultyName": "DILBAR HUSSAIN",
@@ -2002,13 +2003,13 @@
           {
             "slotId": 1,
             "timings": [],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "DR. RIZWAN MUNIR",
             "status": "available"
           },
           {
             "slotId": 2,
             "timings": [],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "DR. RIZWAN MUNIR",
             "status": "available"
           }
         ],
@@ -2030,7 +2031,7 @@
                 "day": "WED",
                 "startTime": "08:30",
                 "endTime": "11:25",
-                "room": ""
+                "room": "E-208"
               }
             ],
             "facultyName": "HAMID SAEED KHAN",
@@ -2047,7 +2048,7 @@
               }
             ],
             "facultyName": "AZEEM AFTAB",
-            "status": "available"
+            "status": "locked"
           },
           {
             "slotId": 3,
@@ -2096,7 +2097,7 @@
                 "day": "FRI",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": ""
+                "room": "E-610"
               }
             ],
             "facultyName": "SYEDA KIRAN FATIMA",
@@ -2112,8 +2113,8 @@
                 "room": "E-804"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
-            "status": "locked"
+            "facultyName": "DR. FIDA HUSSAIN",
+            "status": "available"
           }
         ],
         "Grade": "N/A"
@@ -2230,10 +2231,10 @@
                 "day": "SAT",
                 "startTime": "08:30",
                 "endTime": "11:30",
-                "room": "E-808"
+                "room": "E-605"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "FATIMA SAMAR MADNI",
             "status": "locked"
           },
           {
@@ -2243,10 +2244,10 @@
                 "day": "SAT",
                 "startTime": "11:45",
                 "endTime": "14:45",
-                "room": "E-808"
+                "room": "E-502"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "FATIMA SAMAR MADNI",
             "status": "locked"
           },
           {
@@ -2256,11 +2257,11 @@
                 "day": "SAT",
                 "startTime": "15:00",
                 "endTime": "18:00",
-                "room": "E-808"
+                "room": "E-704"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
-            "status": "available"
+            "facultyName": "DEEPAK KUMAR",
+            "status": "locked"
           }
         ],
         "Grade": "N/A"
@@ -2300,7 +2301,7 @@
                 "day": "WED",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": ""
+                "room": "E-208"
               }
             ],
             "facultyName": "ALI AHMED SIDDIQUI",
@@ -2326,10 +2327,10 @@
                 "day": "FRI",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": ""
+                "room": "E-605"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "DR. JAWAD HUSSAIN AWAN",
             "status": "available"
           }
         ],
@@ -2410,11 +2411,36 @@
                 "day": "WED",
                 "startTime": "08:30",
                 "endTime": "11:25",
-                "room": ""
+                "room": "E-209"
               }
             ],
             "facultyName": "DR. DUR E JABEEN ARAIN",
             "status": "available"
+          }
+        ],
+        "Grade": "N/A"
+      },
+      {
+        "Name": "ARTIFICIAL NEURAL NETWORKS (LAB) (DE)",
+        "CourseCode": "CS427-L",
+        "Status": "locked",
+        "PreRequisites": [
+          "None"
+        ],
+        "Credits": 1,
+        "SLOTS": [
+          {
+            "slotId": 1,
+            "timings": [
+              {
+                "day": "THU",
+                "startTime": "08:30",
+                "endTime": "11:25",
+                "room": "E-208"
+              }
+            ],
+            "facultyName": "SYED MUHAMMAD DANIYAL",
+            "status": "locked"
           }
         ],
         "Grade": "N/A"
@@ -2561,11 +2587,36 @@
       {
         "Name": "COMPUTER VISION (DE)",
         "CourseCode": "CS420",
-        "Status": "not offered",
+        "Status": "available",
         "PreRequisites": [
           "None"
         ],
         "Credits": 3,
+        "SLOTS": [
+          {
+            "slotId": 1,
+            "timings": [
+              {
+                "day": "WED",
+                "startTime": "08:30",
+                "endTime": "11:25",
+                "room": "E-809"
+              }
+            ],
+            "facultyName": "HAFIZA MALIHA IQBAL",
+            "status": "available"
+          }
+        ],
+        "Grade": "N/A"
+      },
+      {
+        "Name": "COMPUTER VISION (LAB) (DE)",
+        "CourseCode": "CS420-L",
+        "Status": "not offered",
+        "PreRequisites": [
+          "None"
+        ],
+        "Credits": 1,
         "SLOTS": [
           {
             "slotId": 1,
@@ -2579,7 +2630,7 @@
       {
         "Name": "CRYPTOGRAPHY & DATA SECURITY (DE)",
         "CourseCode": "CE407",
-        "Status": "locked",
+        "Status": "available",
         "PreRequisites": [
           "None"
         ],
@@ -2596,7 +2647,7 @@
               }
             ],
             "facultyName": "FACULTY MEMBER",
-            "status": "locked"
+            "status": "available"
           }
         ],
         "Grade": "N/A"
@@ -2635,7 +2686,7 @@
                 "day": "WED",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": "E-509"
+                "room": "E-808"
               }
             ],
             "facultyName": "ZAHID HUSSAIN",
@@ -2651,8 +2702,8 @@
                 "room": "E-610"
               }
             ],
-            "facultyName": "ZAHID HUSSAIN",
-            "status": "locked"
+            "facultyName": "DR. ALI AKBAR SIDDIQUE",
+            "status": "available"
           },
           {
             "slotId": 3,
@@ -2661,7 +2712,7 @@
                 "day": "WED",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": "E-509"
+                "room": "E-808"
               }
             ],
             "facultyName": "ZAHID HUSSAIN",
@@ -2673,7 +2724,7 @@
       {
         "Name": "DATA WAREHOUSING & DATA MINING (DE)",
         "CourseCode": "CS414",
-        "Status": "available",
+        "Status": "not offered",
         "PreRequisites": [
           "None"
         ],
@@ -2681,22 +2732,9 @@
         "SLOTS": [
           {
             "slotId": 1,
-            "timings": [
-              {
-                "day": "WED",
-                "startTime": "08:30",
-                "endTime": "10:25",
-                "room": "E-807"
-              },
-              {
-                "day": "FRI",
-                "startTime": "09:30",
-                "endTime": "10:25",
-                "room": "E-807"
-              }
-            ],
-            "facultyName": "MUHAMMAD FAHIM AAMIR",
-            "status": "available"
+            "timings": [],
+            "facultyName": "Course not Offered",
+            "status": "not offered"
           }
         ],
         "Grade": "N/A"
@@ -2704,7 +2742,7 @@
       {
         "Name": "DATA WAREHOUSING & DATA MINING(LAB) (DE)",
         "CourseCode": "CS414-L",
-        "Status": "available",
+        "Status": "locked",
         "PreRequisites": [
           "None"
         ],
@@ -2721,7 +2759,7 @@
               }
             ],
             "facultyName": "MUHAMMAD FAHIM AAMIR",
-            "status": "available"
+            "status": "locked"
           }
         ],
         "Grade": "N/A"
@@ -2729,7 +2767,7 @@
       {
         "Name": "DEEP LEARNING (DE)",
         "CourseCode": "CSC464",
-        "Status": "available",
+        "Status": "locked",
         "PreRequisites": [
           "None"
         ],
@@ -2742,11 +2780,11 @@
                 "day": "MON",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": "E-507"
+                "room": "E-202"
               }
             ],
             "facultyName": "DR. ALI AKBAR SIDDIQUE",
-            "status": "available"
+            "status": "locked"
           },
           {
             "slotId": 2,
@@ -2755,10 +2793,23 @@
                 "day": "MON",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": "E-507"
+                "room": "M-203"
               }
             ],
             "facultyName": "DR. ALI AKBAR SIDDIQUE",
+            "status": "locked"
+          },
+          {
+            "slotId": 3,
+            "timings": [
+              {
+                "day": "MON",
+                "startTime": "11:30",
+                "endTime": "14:25",
+                "room": "E-208"
+              }
+            ],
+            "facultyName": "DR. ABDUL AHAD",
             "status": "locked"
           }
         ],
@@ -2858,7 +2909,20 @@
                 "day": "THU",
                 "startTime": "11:30",
                 "endTime": "14:25",
-                "room": "E-705"
+                "room": "E-208"
+              }
+            ],
+            "facultyName": "BEENISH AHMED",
+            "status": "locked"
+          },
+          {
+            "slotId": 2,
+            "timings": [
+              {
+                "day": "FRI",
+                "startTime": "14:30",
+                "endTime": "14:35",
+                "room": ""
               }
             ],
             "facultyName": "BEENISH AHMED",
@@ -2926,7 +2990,7 @@
                 "day": "FRI",
                 "startTime": "08:30",
                 "endTime": "11:25",
-                "room": ""
+                "room": "E-602"
               }
             ],
             "facultyName": "MUHAMMAD MUBASHIR",
@@ -3005,16 +3069,16 @@
                 "day": "WED",
                 "startTime": "08:30",
                 "endTime": "09:25",
-                "room": ""
+                "room": "E-601"
               },
               {
                 "day": "THU",
                 "startTime": "08:30",
                 "endTime": "10:25",
-                "room": ""
+                "room": "E-601"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "MUHAMMAD AMIN QURESHI",
             "status": "available"
           },
           {
@@ -3024,16 +3088,16 @@
                 "day": "WED",
                 "startTime": "08:30",
                 "endTime": "09:25",
-                "room": ""
+                "room": "E-203"
               },
               {
-                "day": "TUE",
+                "day": "THU",
                 "startTime": "08:30",
                 "endTime": "10:25",
-                "room": ""
+                "room": "E-203"
               }
             ],
-            "facultyName": "MUHAMMAD KASHIF MAJEED",
+            "facultyName": "MUHAMMAD AMIN QURESHI",
             "status": "available"
           }
         ],
@@ -3055,10 +3119,10 @@
                 "day": "FRI",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": ""
+                "room": "E-703"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "MUHAMMAD AMIN QURESHI",
             "status": "available"
           },
           {
@@ -3068,10 +3132,10 @@
                 "day": "FRI",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": ""
+                "room": "E-703"
               }
             ],
-            "facultyName": "FACULTY MEMBER",
+            "facultyName": "MUHAMMAD AMIN QURESHI",
             "status": "available"
           }
         ],
@@ -3165,7 +3229,7 @@
                 "day": "TUE",
                 "startTime": "08:30",
                 "endTime": "11:25",
-                "room": ""
+                "room": "E-201"
               }
             ],
             "facultyName": "SHAHZAD AHMED",
@@ -3178,7 +3242,7 @@
                 "day": "WED",
                 "startTime": "18:30",
                 "endTime": "21:30",
-                "room": "E-207"
+                "room": "E-509"
               }
             ],
             "facultyName": "DANIYAL NAWAZ",
@@ -3436,7 +3500,7 @@
                 "day": "TUE",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": ""
+                "room": "E-209"
               }
             ],
             "facultyName": "ASAD UR REHMAN",
@@ -3528,11 +3592,47 @@
                 "day": "MON",
                 "startTime": "14:30",
                 "endTime": "17:25",
-                "room": "E-508"
+                "room": "E-208"
               }
             ],
+            "facultyName": "AZIZ MEHMOOD FAROOQI",
+            "status": "available"
+          }
+        ],
+        "Grade": "N/A"
+      },
+      {
+        "Name": "WEB ENGINEERING (DE)",
+        "CourseCode": "CSC432",
+        "Status": "available",
+        "PreRequisites": [
+          "None"
+        ],
+        "Credits": 3,
+        "SLOTS": [
+          {
+            "slotId": 1,
+            "timings": [],
             "facultyName": "FACULTY MEMBER",
             "status": "available"
+          }
+        ],
+        "Grade": "N/A"
+      },
+      {
+        "Name": "WEB ENGINEERING (LAB) (DE)",
+        "CourseCode": "CSC432-L",
+        "Status": "not offered",
+        "PreRequisites": [
+          "None"
+        ],
+        "Credits": 1,
+        "SLOTS": [
+          {
+            "slotId": 1,
+            "timings": [],
+            "facultyName": "Course not Offered",
+            "status": "not offered"
           }
         ],
         "Grade": "N/A"

@@ -1,3 +1,4 @@
+/* Base Variables & Reset */
 :root {
   --body-bg: #f0f0f0;
   --nav-bg: #e0e0e0;
@@ -17,6 +18,7 @@ body {
   color: var(--text-color);
 }
 
+/* Layout Structure */
 .main {
   position: relative;
 }
@@ -26,6 +28,7 @@ body {
   height: 100vh;
 }
 
+/* Sidebar Styles */
 .sidebar-container {
   width: 20%;
   background: var(--nav-bg);
@@ -43,6 +46,7 @@ body {
   overflow-y: auto;
 }
 
+/* Semester Accordion Styles */
 .semester-accordion {
   margin: 0;
   padding: 0;
@@ -59,7 +63,6 @@ body {
 }
 
 .semester-accordion.selected .semester-header {
-  view-transition-name: nav;
   background: var(--body-bg);
   position: relative;
   z-index: 1;
@@ -91,37 +94,28 @@ body {
   box-shadow: 5px -5px 0 5px var(--body-bg);
 }
 
+/* Main Content Area */
 .course-content-area {
   flex-grow: 1;
   margin-left: 20%;
   padding: 2rem;
+  padding-top: 0;
   overflow-y: auto;
 }
 
-.semester-title {
+/* Semester Header */
+.semester-content h2 {
   position: sticky;
   top: 0;
   background-color: var(--body-bg);
   z-index: 10;
-  padding: 2rem;
-  margin: 0;
+  padding: 1rem 0;
+  margin: 0 -0.2rem;
   font-size: 2rem;
   color: var(--accent-color);
 }
 
-.semester-title::before {
-  content: "";
-  position: absolute;
-  top: -100px; /* Extend above the visible area */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin-left: -20px;
-  margin-right: -20px;
-  background-color: var(--body-bg);
-  z-index: -1;
-}
-
+/* Course Accordion */
 .course-accordion {
   background-color: white;
   border-radius: 10px;
@@ -130,19 +124,20 @@ body {
 }
 
 .course-header {
-  padding: 1rem;
-  cursor: pointer;
   position: sticky;
-  top: 100px;
+  top: 4rem;
   background-color: white;
   z-index: 5;
   border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
 }
 
 .course-header.open {
   border-bottom: 1px solid #e0e0e0;
 }
 
+/* Course Title & Info */
 .course-title {
   font-size: 1.1em;
   font-weight: bold;
@@ -156,6 +151,7 @@ body {
   font-size: 0.9em;
 }
 
+/* Prerequisites */
 .prereq {
   margin-bottom: 0.5rem;
 }
@@ -177,6 +173,7 @@ body {
   background-color: #ffcdd2;
 }
 
+/* Course Metadata */
 .course-meta {
   display: flex;
   align-items: center;
@@ -197,10 +194,10 @@ body {
   color: var(--accent-color);
 }
 
+/* Status Badges */
 .status-badge {
   font-weight: bold;
 }
-
 .status-cleared {
   background-color: #c8e6c9;
   color: #2e7d32;
@@ -222,6 +219,7 @@ body {
   color: var(--accent-color);
 }
 
+/* Course Content */
 .course-content {
   padding: 1rem;
 }
@@ -231,12 +229,14 @@ body {
   color: #616161;
 }
 
+/* Course Slots Grid */
 .course-slots {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
+/* Course Card */
 .course-card {
   position: relative;
   background-color: white;
@@ -261,6 +261,7 @@ body {
   box-shadow: 0 0 0 2px var(--accent-color);
 }
 
+/* Faculty Info */
 .faculty-info {
   font-weight: bold;
   margin-bottom: 1rem;
@@ -269,6 +270,7 @@ body {
   min-height: 2.6em;
 }
 
+/* Timings Container */
 .timings-container {
   flex-grow: 1;
   margin-bottom: 1rem;
@@ -294,6 +296,7 @@ body {
   color: #616161;
 }
 
+/* Status Container */
 .status-container {
   display: flex;
   justify-content: space-between;
@@ -313,12 +316,12 @@ body {
   background-color: #c8e6c9;
   color: #2e7d32;
 }
-
 .slot-status.locked {
   background-color: #ffcdd2;
   color: #c62828;
 }
 
+/* Radio Inputs */
 .course-card input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
@@ -335,6 +338,7 @@ body {
   box-shadow: 0 0 0 2px white inset;
 }
 
+/* Unselectable & Clashing States */
 .course-card.unselectable {
   box-shadow: 0 0 0 2px #ff5252;
   opacity: 0.6;
@@ -350,9 +354,12 @@ body {
   border-radius: 4px;
 }
 
+/* Register Button */
 .register-button {
   display: block;
-  margin: 1rem auto;
+  width: 100%;
+  max-width: 300px;
+  margin: 2.8rem auto;
   padding: 0.75rem 1.5rem;
   font-size: 1em;
   background-color: var(--accent-color);
@@ -367,27 +374,7 @@ body {
   background-color: #0d47a1;
 }
 
-.placeholder-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-size: 1.2em;
-  color: #757575;
-  text-align: center;
-  padding: 2rem;
-}
-
-.placeholder-text ul {
-  text-align: left;
-  margin-top: 1rem;
-}
-
-.placeholder-text li {
-  margin-bottom: 0.5rem;
-}
-
+/* Loading States */
 .course-card .spinner {
   position: absolute;
   top: 50%;
@@ -426,7 +413,7 @@ body {
   }
 }
 
-/* Sidebar toggle styles */
+/* Sidebar Toggle */
 .sidebar-toggle {
   display: none;
 }
@@ -465,16 +452,14 @@ body {
   margin-top: 8px;
 }
 
-/* Responsive styles */
+/* Responsive Breakpoints */
 @media (max-width: 1200px) {
   .sidebar-container {
     width: 25%;
   }
-
   .course-content-area {
     margin-left: 25%;
   }
-
   .course-slots {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
@@ -484,11 +469,9 @@ body {
   .sidebar-container {
     width: 30%;
   }
-
   .course-content-area {
     margin-left: 30%;
   }
-
   .course-slots {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
@@ -502,6 +485,7 @@ body {
   .course-registration {
     flex-direction: column;
     height: auto;
+    padding-top: 3.5rem;
   }
 
   .sidebar-container {
@@ -514,22 +498,69 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 10px;
     left: 10px;
     z-index: 1001;
+    background-color: var(--accent-color);
+    border-radius: 5px;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .course-content-area {
     margin-left: 0;
-    padding: 1rem;
-    padding-top: 60px;
+    padding: 0;
+    width: 100%;
   }
 
+  .semester-content {
+    position: relative;
+    padding: 0;
+    margin: 0;
+  }
+
+  .semester-content h2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    padding-left: 3.5rem;
+    background: var(--body-bg);
+    z-index: 100;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .course-accordion {
+    border-radius: 0;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .course-header {
+    position: sticky;
+    top: 3.5rem;
+    z-index: 99;
+    background: white;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0;
+  }
+
+  .course-content {
+    padding: 1rem;
+    background: white;
+  }
+
+  .course-slots {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sidebar toggle states */
   .sidebar-toggle:checked ~ .course-registration .sidebar-container {
     transform: translateX(0);
   }
@@ -548,20 +579,7 @@ body {
     transform: rotate(-45deg);
   }
 
-  .course-slots {
-    grid-template-columns: 1fr;
-  }
-
-  .semester-title {
-    font-size: 1.5rem;
-    padding: 1rem;
-  }
-
-  .course-header {
-    top: 40px;
-  }
-
-  /* Add a backdrop when sidebar is open */
+  /* Backdrop */
   .sidebar-toggle:checked ~ .course-registration::before {
     content: "";
     position: fixed;
@@ -570,22 +588,15 @@ body {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
-
-  .register-button {
-    width: 100%;
-    max-width: 300px;
-    margin: 2.8rem auto;
+    z-index: 99;
   }
 }
-
 @media (max-width: 480px) {
   body {
     font-size: 12px;
   }
 
-  .semester-title {
+  .semester-content h2 {
     font-size: 1.2rem;
   }
 
@@ -631,7 +642,7 @@ body {
   }
 }
 
-/* Accessibility improvements */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .course-card,
   .sidebar-container,
@@ -641,7 +652,7 @@ body {
   }
 }
 
-/* High contrast mode */
+/* High Contrast Mode */
 @media (prefers-contrast: high) {
   :root {
     --body-bg: #ffffff;
@@ -663,7 +674,7 @@ body {
   }
 }
 
-/* Print styles */
+/* Print Styles */
 @media print {
   .sidebar-container,
   .sidebar-toggle-label,
@@ -684,4 +695,16 @@ body {
     border: 1px solid #000000;
     margin-bottom: 1em;
   }
+}
+
+/* Backdrop when sidebar is open */
+.sidebar-toggle:checked ~ .course-registration::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
