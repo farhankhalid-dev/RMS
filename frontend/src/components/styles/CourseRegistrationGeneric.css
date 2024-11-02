@@ -1,11 +1,13 @@
-/* Base Variables & Reset */
+/* Base Variables */
 :root {
   --body-bg: #f0f0f0;
   --nav-bg: #e0e0e0;
   --text-color: #333;
   --accent-color: #1565c0;
+  --border-radius: 2rem;
 }
 
+/* Reset & Base Styles */
 * {
   box-sizing: border-box;
 }
@@ -19,16 +21,12 @@ body {
 }
 
 /* Layout Structure */
-.main {
-  position: relative;
-}
-
 .course-registration {
   display: flex;
   height: 100vh;
 }
 
-/* Sidebar Styles */
+/* Sidebar */
 .sidebar-container {
   width: 20%;
   background: var(--nav-bg);
@@ -46,7 +44,7 @@ body {
   overflow-y: auto;
 }
 
-/* Semester Accordion Styles */
+/* Semester Accordion */
 .semester-accordion {
   margin: 0;
   padding: 0;
@@ -73,7 +71,6 @@ body {
 
 .semester-accordion.selected .semester-header::before,
 .semester-accordion.selected .semester-header::after {
-  --border-radius: 2rem;
   content: "";
   position: absolute;
   width: var(--border-radius);
@@ -103,7 +100,6 @@ body {
   overflow-y: auto;
 }
 
-/* Semester Header */
 .semester-content h2 {
   position: sticky;
   top: 0;
@@ -137,7 +133,11 @@ body {
   border-bottom: 1px solid #e0e0e0;
 }
 
-/* Course Title & Info */
+/* Course Content */
+.course-content {
+  padding: 1rem;
+}
+
 .course-title {
   font-size: 1.1em;
   font-weight: bold;
@@ -151,29 +151,7 @@ body {
   font-size: 0.9em;
 }
 
-/* Prerequisites */
-.prereq {
-  margin-bottom: 0.5rem;
-}
-
-.prereq-item {
-  font-size: 0.8em;
-  margin-right: 0.5rem;
-  padding: 2px 5px;
-  border-radius: 3px;
-}
-
-.prereq-item.cleared {
-  background-color: #c8e6c9;
-}
-.prereq-item.in-progress {
-  background-color: #fff9c4;
-}
-.prereq-item.unknown {
-  background-color: #ffcdd2;
-}
-
-/* Course Metadata */
+/* Course Meta */
 .course-meta {
   display: flex;
   align-items: center;
@@ -198,38 +176,14 @@ body {
 .status-badge {
   font-weight: bold;
 }
-.status-cleared {
-  background-color: #c8e6c9;
-  color: #2e7d32;
-}
-.status-in-progress {
-  background-color: #fff9c4;
-  color: #f57f17;
-}
-.status-not-cleared {
-  background-color: #ffcdd2;
-  color: #c62828;
-}
-.status-not-available {
-  background-color: #f5f5f5;
-  color: #616161;
-}
-.status-available {
-  background-color: #bbdefb;
-  color: var(--accent-color);
-}
 
-/* Course Content */
-.course-content {
-  padding: 1rem;
-}
+.status-cleared { background-color: #c8e6c9; color: #2e7d32; }
+.status-in-progress { background-color: #fff9c4; color: #f57f17; }
+.status-not-cleared { background-color: #ffcdd2; color: #c62828; }
+.status-not-available { background-color: #f5f5f5; color: #616161; }
+.status-available { background-color: #bbdefb; color: var(--accent-color); }
 
-.course-message {
-  font-style: italic;
-  color: #616161;
-}
-
-/* Course Slots Grid */
+/* Course Slots */
 .course-slots {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -261,6 +215,11 @@ body {
   box-shadow: 0 0 0 2px var(--accent-color);
 }
 
+.course-card.unselectable {
+  box-shadow: 0 0 0 2px #ff5252;
+  opacity: 0.6;
+}
+
 /* Faculty Info */
 .faculty-info {
   font-weight: bold;
@@ -270,7 +229,7 @@ body {
   min-height: 2.6em;
 }
 
-/* Timings Container */
+/* Timings */
 .timings-container {
   flex-grow: 1;
   margin-bottom: 1rem;
@@ -296,7 +255,7 @@ body {
   color: #616161;
 }
 
-/* Status Container */
+/* Status */
 .status-container {
   display: flex;
   justify-content: space-between;
@@ -312,47 +271,8 @@ body {
   text-transform: uppercase;
 }
 
-.slot-status.available {
-  background-color: #c8e6c9;
-  color: #2e7d32;
-}
-.slot-status.locked {
-  background-color: #ffcdd2;
-  color: #c62828;
-}
-
-/* Radio Inputs */
-.course-card input[type="radio"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--accent-color);
-  border-radius: 50%;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.course-card input[type="radio"]:checked {
-  background-color: var(--accent-color);
-  box-shadow: 0 0 0 2px white inset;
-}
-
-/* Unselectable & Clashing States */
-.course-card.unselectable {
-  box-shadow: 0 0 0 2px #ff5252;
-  opacity: 0.6;
-}
-
-.clashing-courses {
-  font-size: 0.8em;
-  color: #ff5252;
-  margin-top: 0.5rem;
-  font-weight: bold;
-  background-color: #ffebee;
-  padding: 0.5rem;
-  border-radius: 4px;
-}
+.slot-status.available { background-color: #c8e6c9; color: #2e7d32; }
+.slot-status.locked { background-color: #ffcdd2; color: #c62828; }
 
 /* Register Button */
 .register-button {
@@ -374,62 +294,16 @@ body {
   background-color: #0d47a1;
 }
 
-/* Loading States */
-.course-card .spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 30px;
-  height: 30px;
-  border: 3px solid rgba(0, 0, 0, 0.1);
-  border-top: 3px solid var(--accent-color);
-  border-radius: 50%;
-  animation: spinner 0.6s linear infinite;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  transform: translate(-50%, -50%);
-}
-
-.course-card.loading .spinner {
-  opacity: 1;
-  visibility: visible;
-}
-
-.course-card .card-content {
-  transition: opacity 0.3s ease-in-out;
-}
-
-.course-card.loading .card-content {
-  opacity: 0.5;
-}
-
-@keyframes spinner {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-/* Sidebar Toggle */
+/* Mobile Menu */
 .sidebar-toggle {
   display: none;
 }
 
 .sidebar-toggle-label {
   display: none;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1001;
-  cursor: pointer;
-  padding: 10px;
-  background-color: var(--accent-color);
-  border-radius: 5px;
 }
 
+/* Menu Icon */
 .menu-icon,
 .menu-icon::before,
 .menu-icon::after {
@@ -442,56 +316,40 @@ body {
   border-radius: 2px;
 }
 
-.menu-icon::before {
-  content: "";
-  margin-top: -8px;
-}
-
-.menu-icon::after {
-  content: "";
-  margin-top: 8px;
-}
+.menu-icon::before { content: ""; margin-top: -8px; }
+.menu-icon::after { content: ""; margin-top: 8px; }
 
 /* Responsive Breakpoints */
 @media (max-width: 1200px) {
-  .sidebar-container {
-    width: 25%;
-  }
-  .course-content-area {
-    margin-left: 25%;
-  }
-  .course-slots {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
+  .sidebar-container { width: 25%; }
+  .course-content-area { margin-left: 25%; }
+  .course-slots { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
 }
 
 @media (max-width: 992px) {
-  .sidebar-container {
-    width: 30%;
-  }
-  .course-content-area {
-    margin-left: 30%;
-  }
-  .course-slots {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  }
+  .sidebar-container { width: 30%; }
+  .course-content-area { margin-left: 30%; }
+  .course-slots { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
 }
 
 @media (max-width: 768px) {
   body {
     font-size: 14px;
+    height: auto;
+    overflow-y: auto;
   }
 
   .course-registration {
     flex-direction: column;
-    height: auto;
-    padding-top: 3.5rem;
+    min-height: 100vh;
+    position: relative;
   }
 
   .sidebar-container {
     width: 250px;
     transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
+    position: fixed;
+    z-index: 1001;
   }
 
   .sidebar-toggle-label {
@@ -504,7 +362,7 @@ body {
     position: fixed;
     top: 10px;
     left: 10px;
-    z-index: 1001;
+    z-index: 1002;
     background-color: var(--accent-color);
     border-radius: 5px;
     cursor: pointer;
@@ -514,11 +372,14 @@ body {
     margin-left: 0;
     padding: 0;
     width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 3.5rem;
+    position: relative;
   }
 
   .semester-content {
     position: relative;
-    padding: 0;
     margin: 0;
   }
 
@@ -533,27 +394,20 @@ body {
     z-index: 100;
     margin: 0;
     font-size: 1.5rem;
+    height: 3.5rem;
   }
 
   .course-accordion {
     border-radius: 0;
-    margin: 0;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
   }
 
   .course-header {
     position: sticky;
-    top: 3.5rem;
+    top: 0;
+    background: white;
     z-index: 99;
-    background: white;
-    width: 100%;
-    padding: 1rem;
     border-radius: 0;
-  }
-
-  .course-content {
-    padding: 1rem;
-    background: white;
   }
 
   .course-slots {
@@ -579,35 +433,26 @@ body {
     transform: rotate(-45deg);
   }
 
-  /* Backdrop */
+  /* Mobile backdrop */
   .sidebar-toggle:checked ~ .course-registration::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 99;
+    z-index: 1001;
   }
 }
+
 @media (max-width: 480px) {
-  body {
-    font-size: 12px;
-  }
-
-  .semester-content h2 {
-    font-size: 1.2rem;
-  }
-
-  .course-card {
-    padding: 1rem;
-  }
-
-  .faculty-info {
-    font-size: 1em;
-  }
-
+  body { font-size: 12px; }
+  .semester-content h2 { font-size: 1.2rem; }
+  .course-card { padding: 1rem; }
+  .faculty-info { font-size: 1em; }
+  .sidebar-container { width: 100%; }
+  .course-header { padding: 0.75rem; }
+  .course-title { font-size: 1em; }
+  .credits-badge, .status-badge { font-size: 0.6em; }
+  
   .slot-timings {
     flex-direction: column;
     align-items: flex-start;
@@ -618,35 +463,12 @@ body {
   .slot-room {
     margin-bottom: 0.25rem;
   }
-
-  .sidebar-container {
-    width: 100%;
-  }
-
-  .course-header {
-    padding: 0.75rem;
-  }
-
-  .course-title {
-    font-size: 1em;
-  }
-
-  .credits-badge,
-  .status-badge {
-    font-size: 0.6em;
-  }
-
-  .register-button {
-    font-size: 0.9em;
-    padding: 0.6rem 1.2rem;
-  }
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .course-card,
   .sidebar-container,
-  .course-card input[type="radio"],
   .register-button {
     transition: none;
   }
@@ -688,23 +510,10 @@ body {
 
   .course-card {
     break-inside: avoid;
-    page-break-inside: avoid;
   }
 
   .course-accordion {
     border: 1px solid #000000;
     margin-bottom: 1em;
   }
-}
-
-/* Backdrop when sidebar is open */
-.sidebar-toggle:checked ~ .course-registration::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
 }
