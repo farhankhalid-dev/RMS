@@ -182,7 +182,7 @@ const CourseRegistrationGeneric = () => {
           ? "prereq-item cleared"
           : status.includes("In Progress")
           ? "prereq-item in-progress"
-          : "prereq-item unknown";
+          : "prereq-item to-be-taken";
 
         return (
           <span key={`prereq-${index}`} className={className}>
