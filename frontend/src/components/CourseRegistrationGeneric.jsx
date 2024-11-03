@@ -76,7 +76,7 @@ const CourseCard = React.memo(({ course, slot, isSelected, onSelect, id, clashin
             type="radio"
             checked={isSelected}
             onChange={handleClick}
-            disabled={!isSelectable || isLoading}
+            disabled={!isSelectable}
           />
         </div>
       </div>
