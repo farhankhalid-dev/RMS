@@ -49,7 +49,7 @@ body {
 
 .content-wrapper {
   margin-left: clamp(250px, 20%, 350px);
-  width: clamp(calc(100% - 350px), 80%, calc(100% - 250px));
+  width: 100%;
   padding: 0 2rem;
 }
 
@@ -117,14 +117,15 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  text-align: center;
+  margin-left: clamp(250px, 20%, 350px);
+  padding: 2rem;
   background: var(--body-bg);
+  /* background:red; */
+  text-align: center;
   z-index: 6;
   color: var(--accent-blue);
-  width: 100vw;
   font-size: 2rem;
   font-weight: bold;
-  padding: 2rem 0;
 }
 
 .course-accordion {
