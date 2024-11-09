@@ -47,23 +47,31 @@ body {
   height: 100vh;
 }
 
-/* .calendar-content {
-  padding-top: 4rem;
-} */
+.content-wrapper {
+  margin-left: clamp(250px, 20%, 350px);
+  width: clamp(calc(100% - 350px), 80%, calc(100% - 250px));
+  padding: 0 2rem;
+}
+
+.semester-content {
+  margin-top: 8rem;
+}
 
 .sidebar-container {
-  width: 20%;
-  background: var(--nav-bg);
   position: fixed;
+  background: var(--nav-bg);
   top: 0;
   bottom: 0;
   left: 0;
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
+  width: clamp(250px, 20%, 350px);
 }
 
 .semester-list {
-  padding-block: 2rem;
+  width: 100%;
+  text-align: center;
+  padding-top: 2rem;
   overflow-y: hidden;
 }
 
@@ -104,28 +112,21 @@ body {
   box-shadow: 5px -5px 0 5px var(--body-bg);
 }
 
-.course-content-area {
-  flex-grow: 1;
-  margin-left: 20%;
-  padding: 2rem;
-  overflow-y: auto;
-}
-
-.semester-content h2 {
+.semester-title {
   position: fixed;
   top: 0;
-  padding: 1rem;
-  padding-left: 3.5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
   background: var(--body-bg);
   z-index: 6;
-  margin: 0;
-  font-size: 1.5rem;
   color: var(--accent-blue);
-  width: 100%;
+  width: 100vw;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 2rem 0;
 }
-.course-accordion:nth-child(2) {
-  margin-top: 3.5rem;
-}
+
 .course-accordion {
   background-color: white;
   border-radius: 10px;
@@ -134,8 +135,9 @@ body {
 }
 
 .course-header {
+  /* temp */
   position: sticky;
-  top: 1.7rem;
+  top: 6rem;
   background-color: white;
   z-index: 5;
   border-radius: 10px;
@@ -147,8 +149,8 @@ body {
   border-bottom: 1px solid var(--border-color);
 }
 
-.course-content {
-  padding: 1rem;
+.course-message {
+  padding: 2rem;
 }
 
 .course-title {
@@ -235,6 +237,7 @@ body {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 2rem;
 }
 
 .course-card {
@@ -309,6 +312,12 @@ body {
   border-color: var(--error-bright);
   background: var(--neutral-light);
   cursor: not-allowed;
+}
+
+.clashing-courses {
+  font-size: 0.75em;
+  color: red;
+  margin-top: 1rem;
 }
 
 .faculty-info {
@@ -421,23 +430,8 @@ body {
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 1200px) {
-  .sidebar-container {
-    width: 25%;
-  }
-
-  .course-content-area {
-    margin-left: 25%;
-  }
-}
 
 @media (max-width: 992px) {
-  .sidebar-container {
-    width: 30%;
-  }
-  .course-content-area {
-    margin-left: 30%;
-  }
   .course-slots {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
@@ -451,15 +445,18 @@ body {
   }
 
   .sidebar-container {
-    width: 250px;
     transform: translateX(-100%);
-    position: fixed;
-    z-index: 102;
+    width: clamp(280px, 80%, 100%);
   }
 
-  /* .calendar-content{
-    padding-top: 0;
-  } */
+  .semester-list {
+    width: 100%;
+  }
+
+  .content-wrapper {
+    width: 100%;
+    margin-left: 0;
+  }
 
   .sidebar-toggle-label {
     display: flex;
@@ -477,44 +474,8 @@ body {
     cursor: pointer;
   }
 
-  .course-content-area {
-    margin-left: 0;
-    padding: 3.5rem 4rem 0 4rem;
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-    position: relative;
-  }
-
-  .semester-content h2 {
-    z-index: 100;
-    margin: 0;
-  }
-
-  .course-accordion {
-    margin: 0 0 1rem !important;
-  }
-  .course-header {
-    top: 0;
-  }
-  .course-card {
-    padding: 0.75rem;
-  }
   .timings-container {
     margin: 0;
-  }
-  .slot-timings {
-    padding: 0;
-  }
-
-  .slot-room {
-    font-weight: 800;
-    font-size: 0.85em;
-  }
-
-  .clashing-courses {
-    font-size: 0.75em;
-    color: red;
   }
   .faculty-info {
     min-height: unset;
@@ -551,9 +512,6 @@ body {
 @media (max-width: 480px) {
   body {
     font-size: 14px;
-  }
-  .semester-content h2 {
-    font-size: 1.2rem;
   }
   .course-card {
     padding: 1rem;
@@ -641,7 +599,10 @@ body {
 }
 
 /* Calendar section styles */
-
+.calendar-content {
+  padding: 2rem;
+  margin-top: 1rem;
+}
 .register-calendar {
   font-family: Arial, sans-serif;
   max-width: 100%;
@@ -722,6 +683,11 @@ body {
     overflow-x: visible;
   }
 
+  .content-wrapper {
+    width: 100vw;
+    margin-left: 0;
+  }
+
   .calendar-grid {
     display: block;
     background-color: transparent;
@@ -766,4 +732,66 @@ body {
     border-bottom: 2px solid #ddd;
     padding-bottom: 5px;
   }
+}
+
+/* Student Info section */
+.student-info {
+  margin-top: 2rem;
+  padding: 2rem;
+}
+.student-info-content {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.info-value {
+  color: var(--accent-blue);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .student-info-content {
+    padding: 1rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 0;
+  }
+
+  .info-label {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Add a title for the student info section */
+.student-info-content::before {
+  content: "Student Information";
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-blue);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-blue);
 }

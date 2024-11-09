@@ -1,15 +1,23 @@
-import React from 'react';
-import "./styles/StudentInfo.css"
-import studentData from "../data/studentInfo.json";
+import React from "react";
+import "./styles/CourseRegistrationGeneric.css";
 
-const StudentInfo = () => {
+const StudentInfo = ({ studentData }) => {
   const infoItems = [
-    { label: "Name", value: studentData.name },
-    { label: "Reg. Number", value: studentData.regNumber },
-    { label: "Program", value: studentData.program },
-    { label: "Credit Hours Required", value: studentData.creditHoursRequired },
-    { label: "Credit Hours Completed", value: studentData.creditHoursCompleted },
-    { label: "Credit Hours Remaining", value: studentData.creditHoursRemaining }
+    { label: "Name", value: studentData.Name },
+    { label: "Reg. Number", value: studentData["Reg. Number"] },
+    { label: "Program", value: studentData.Program },
+    {
+      label: "Credit Hours Required",
+      value: studentData["Credit Hours Required"],
+    },
+    {
+      label: "Credit Hours Completed",
+      value: studentData["Credit Hours Completed"],
+    },
+    {
+      label: "Credit Hours Remaining",
+      value: studentData["Credit Hours Remaining"],
+    },
   ];
 
   return (
