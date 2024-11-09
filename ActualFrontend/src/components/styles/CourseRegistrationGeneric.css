@@ -63,7 +63,7 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 101;
   transition: transform 0.3s ease-in-out;
   width: clamp(250px, 20%, 350px);
 }
@@ -71,7 +71,7 @@ body {
 .semester-list {
   width: 100%;
   text-align: center;
-  padding-top: 2rem;
+  padding-top: 4rem;
   overflow-y: hidden;
 }
 
@@ -439,7 +439,7 @@ body {
 
 @media (max-width: 768px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
     height: auto;
     overflow-y: auto;
   }
@@ -447,10 +447,6 @@ body {
   .sidebar-container {
     transform: translateX(-100%);
     width: clamp(280px, 80%, 100%);
-  }
-
-  .semester-list {
-    width: 100%;
   }
 
   .content-wrapper {
@@ -511,7 +507,7 @@ body {
 
 @media (max-width: 480px) {
   body {
-    font-size: 14px;
+    font-size: 16px;
   }
   .course-card {
     padding: 1rem;
@@ -520,7 +516,7 @@ body {
     font-size: 1em;
   }
   .sidebar-container {
-    width: 100%;
+    width: 60%;
   }
   .course-header {
     padding: 0.75rem;
