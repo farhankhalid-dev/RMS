@@ -444,6 +444,10 @@ body {
     height: auto;
     overflow-y: auto;
   }
+  
+  .semester-title{
+    margin-left: 0;
+  }
 
   .sidebar-container {
     transform: translateX(-100%);
@@ -604,6 +608,15 @@ body {
   font-family: Arial, sans-serif;
   max-width: 100%;
   overflow-x: auto;
+}
+
+.timetable-heading{
+    padding: 2rem;
+    background: var(--body-bg);
+    text-align: center;
+    color: var(--accent-blue);
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .calendar-grid {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./styles/CourseRegistrationGeneric.css";
 
 const DAYS = [
   "Monday",
@@ -47,6 +46,11 @@ const RegisterCalendar = ({ selectedCourses }) => {
     return hours + minutes / 60;
   };
 
+  const roundToNearestSlot = (time) => {
+    const slotSize = 0.5; // 30 minutes
+    return Math.round(time * 2) / 2; // Round to nearest 0.5
+  };
+
   const formatTime = (time) => {
     const [hours, minutes] = time.split(":");
     return `${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}`;
@@ -57,7 +61,7 @@ const RegisterCalendar = ({ selectedCourses }) => {
       .split(/\s*\(([^)]+)\)/)
       .filter(Boolean);
     const mainInitials = mainPart
-      .split(/\s+/)
+      .split(/\s*(?:&|\s)\s*/)
       .map((word) => word[0].toUpperCase())
       .join("");
     const labInitial = labPart ? `-${labPart[0].toUpperCase()}` : "";
@@ -67,8 +71,8 @@ const RegisterCalendar = ({ selectedCourses }) => {
   const getSlotStyle = (day, hour, course) => {
     const timing = course.slot.timings.find((t) => DAY_MAP[t.day] === day);
     if (timing) {
-      const start = parseTime(timing.startTime);
-      const end = parseTime(timing.endTime);
+      const start = roundToNearestSlot(parseTime(timing.startTime));
+      const end = roundToNearestSlot(parseTime(timing.endTime));
       if (hour >= start && hour < end) {
         return {
           backgroundColor: courseColors[course.code],
@@ -86,8 +90,8 @@ const RegisterCalendar = ({ selectedCourses }) => {
     const style = getSlotStyle(day, hour, course);
     if (style) {
       const timing = course.slot.timings.find((t) => DAY_MAP[t.day] === day);
-      const isFirstSlot = parseTime(timing.startTime) === hour;
-      const duration = parseTime(timing.endTime) - parseTime(timing.startTime);
+      const isFirstSlot = roundToNearestSlot(parseTime(timing.startTime)) === hour;
+      const duration = roundToNearestSlot(parseTime(timing.endTime)) - roundToNearestSlot(parseTime(timing.startTime));
       const slots = Math.ceil(duration * 2);
 
       return (
@@ -115,6 +119,7 @@ const RegisterCalendar = ({ selectedCourses }) => {
 
   const renderDesktopView = () => (
     <div className="calendar-grid">
+
       <div className="calendar-header time-header">Time</div>
       {DAYS.map((day) => (
         <div key={day} className="day-header-grid">
@@ -196,6 +201,9 @@ const RegisterCalendar = ({ selectedCourses }) => {
 
   return (
     <div className="register-calendar">
+            <div className="timetable-heading">
+        <h2>Course Timetable</h2>
+      </div>
       {isMobile ? renderMobileView() : renderDesktopView()}
     </div>
   );
