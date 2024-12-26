@@ -320,119 +320,119 @@ const CourseRegistrationGeneric = () => {
             </div>
           </div>
         </div>
-<div className="content-wrapper">
-  
-            {selectedItem === "calendar" ? (
-              <div className="calendar-content">
-                <Calendar selectedCourses={Object.values(selectedSlots)} />
+        <div className="content-wrapper">
+          {selectedItem === "calendar" ? (
+            <div className="calendar-content">
+              <Calendar selectedCourses={Object.values(selectedSlots)} />
+            </div>
+          ) : selectedItem !== null ? (
+            <div className="semester-content">
+              <div className="semester-title">
+                <h2>{courseData.semesters[selectedItem].semester}</h2>
               </div>
-            ) : selectedItem !== null ? (
-              <div className="semester-content">
-                <div className="semester-title">
-                  <h2>{courseData.semesters[selectedItem].semester}</h2>
-                </div>
-                <div className="course-content">
-                  {courseData.semesters[selectedItem].courses.map(
-                    (course, courseIndex) => {
-                      const { allCleared, anyInProgress } =
-                        checkPrerequisitesStatus(course.PreRequisites);
-                      const courseStatus = course.Status || "unknown";
-                      const isAvailable = checkCourseAvailability(course);
-                      let statusMessage, statusClassName;
-                      if (courseStatus.includes("cleared")) {
-                        statusMessage = `Cleared: ${course.Grade || "N/A"}`;
-                        statusClassName = "status-cleared";
-                      } else if (courseStatus.includes("In Progress")) {
-                        statusMessage = "Currently In Progress";
-                        statusClassName = "status-in-progress";
-                      } else if (!allCleared) {
-                        statusMessage = "Prerequisites not cleared";
-                        statusClassName = "status-not-cleared";
-                      } else if (anyInProgress) {
-                        statusMessage = "Prerequisites in progress";
-                        statusClassName = "status-in-progress";
-                      } else if (!isAvailable) {
-                        statusMessage = "No slots available";
-                        statusClassName = "status-not-available";
-                      } else {
-                        statusMessage = "Available";
-                        statusClassName = "status-available";
-                      }
-                      return (
+              <div className="course-content">
+                {courseData.semesters[selectedItem].courses.map(
+                  (course, courseIndex) => {
+                    const { allCleared, anyInProgress } =
+                      checkPrerequisitesStatus(course.PreRequisites);
+                    const courseStatus = course.Status || "unknown";
+                    const isAvailable = checkCourseAvailability(course);
+                    let statusMessage, statusClassName;
+                    if (courseStatus.includes("cleared")) {
+                      statusMessage = `Cleared: ${course.Grade || "N/A"}`;
+                      statusClassName = "status-cleared";
+                    } else if (courseStatus.includes("In Progress")) {
+                      statusMessage = "Currently In Progress";
+                      statusClassName = "status-in-progress";
+                    } else if (!allCleared) {
+                      statusMessage = "Prerequisites not cleared";
+                      statusClassName = "status-not-cleared";
+                    } else if (anyInProgress) {
+                      statusMessage = "Prerequisites in progress";
+                      statusClassName = "status-in-progress";
+                    } else if (!isAvailable) {
+                      statusMessage = "No slots available";
+                      statusClassName = "status-not-available";
+                    } else {
+                      statusMessage = "Available";
+                      statusClassName = "status-available";
+                    }
+                    return (
+                      <div
+                        key={`course-${courseIndex}-${course.CourseCode}`}
+                        className="course-accordion"
+                      >
                         <div
-                          key={`course-${courseIndex}-${course.CourseCode}`}
-                          className="course-accordion"
+                          className={`course-header ${
+                            openCourses[course.CourseCode] ? "open" : ""
+                          }`}
+                          onClick={() => toggleCourse(course.CourseCode)}
                         >
-                          <div
-                            className={`course-header ${
-                              openCourses[course.CourseCode] ? "open" : ""
-                            }`}
-                            onClick={() => toggleCourse(course.CourseCode)}
-                          >
-                            <div className="course-title">
-                              {course.CourseCode} - {course.Name}
+                          <div className="course-title">
+                            {course.CourseCode} - {course.Name}
+                          </div>
+                          <div className="course-info">
+                            <div className="prereq">
+                              Prerequisites:{" "}
+                              {renderPrerequisites(course.PreRequisites)}
                             </div>
-                            <div className="course-info">
-                              <div className="prereq">
-                                Prerequisites:{" "}
-                                {renderPrerequisites(course.PreRequisites)}
-                              </div>
-                              <div className="course-meta">
-                                <span className="credits-badge">
-                                  Credits: {course.Credits}
-                                </span>
-                                <span className={`status-badge ${statusClassName}`}>
-                                  {statusMessage}
-                                </span>
-                              </div>
+                            <div className="course-meta">
+                              <span className="credits-badge">
+                                Credits: {course.Credits}
+                              </span>
+                              <span
+                                className={`status-badge ${statusClassName}`}
+                              >
+                                {statusMessage}
+                              </span>
                             </div>
                           </div>
-                          {openCourses[course.CourseCode] && (
-                            courseStatus.includes("cleared") ||
-                            courseStatus.includes("In Progress") ? (
-                              <div className="course-message">
-                                {statusMessage}
-                                <p>
-                                  If you want to re-take this course, contact
-                                  Learning Facilitators
-                                </p>
-                              </div>
-                            ) : (
-                              <div className="course-slots">
-                                {(course.SLOTS || []).map((slot, slotIndex) => (
-                                  <CourseCard
-                                    key={`slot-${slotIndex}-${slot.inputId}`}
-                                    id={slot.inputId}
-                                    course={course}
-                                    slot={slot}
-                                    isSelected={
-                                      selectedSlots[course.CourseCode]?.id ===
-                                      slot.inputId
-                                    }
-                                    onSelect={handleSelect}
-                                    clashingCourses={getClashingCourses(
-                                      course.CourseCode,
-                                      slot
-                                    )}
-                                  />
-                                ))}
-                              </div>
-                            )
-                          )}
                         </div>
-                      );
-                    }
-                  )}
-                </div>
+                        {openCourses[course.CourseCode] &&
+                          (courseStatus.includes("cleared") ||
+                          courseStatus.includes("In Progress") ? (
+                            <div className="course-message">
+                              {statusMessage}
+                              <p>
+                                If you want to re-take this course, contact
+                                Learning Facilitators
+                              </p>
+                            </div>
+                          ) : (
+                            <div className="course-slots">
+                              {(course.SLOTS || []).map((slot, slotIndex) => (
+                                <CourseCard
+                                  key={`slot-${slotIndex}-${slot.inputId}`}
+                                  id={slot.inputId}
+                                  course={course}
+                                  slot={slot}
+                                  isSelected={
+                                    selectedSlots[course.CourseCode]?.id ===
+                                    slot.inputId
+                                  }
+                                  onSelect={handleSelect}
+                                  clashingCourses={getClashingCourses(
+                                    course.CourseCode,
+                                    slot
+                                  )}
+                                />
+                              ))}
+                            </div>
+                          ))}
+                      </div>
+                    );
+                  }
+                )}
               </div>
-            ) : (
-              <div className="student-info">
-                <StudentInfo studentData={courseData.studentInfo} />
-              </div>
-            )}
+            </div>
+          ) : (
+            <div className="student-info">
+              <StudentInfo studentData={courseData.studentInfo} />
+            </div>
+          )}
         </div>
       </div>
-</div>
+    </div>
   );
 };
 

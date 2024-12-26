@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/CourseRegistrationGeneric.css";
+import NewComponent from "./NewComponent.jsx";
 
 const StudentInfo = ({ studentData }) => {
   const infoItems = [
@@ -22,6 +23,7 @@ const StudentInfo = ({ studentData }) => {
 
   return (
     <div className="student-info-content">
+      {/* <NewComponent /> */}
       {infoItems.map((item, index) => (
         <div key={index} className="info-item">
           <span className="info-label">{item.label}:</span>
