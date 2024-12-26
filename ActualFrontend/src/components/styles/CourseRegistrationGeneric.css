@@ -601,8 +601,7 @@ body {
 
 /* Calendar section styles */
 .calendar-content {
-  padding: 2rem;
-  margin-top: 1rem;
+  padding: 1.5rem;
 }
 .register-calendar {
   font-family: Arial, sans-serif;
@@ -611,7 +610,7 @@ body {
 }
 
 .timetable-heading{
-    padding: 2rem;
+    padding-bottom: 1rem;
     background: var(--body-bg);
     text-align: center;
     color: var(--accent-blue);
